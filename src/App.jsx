@@ -9,10 +9,10 @@ function App() {
       <div style={{
         textAlign: 'center',
         padding: '4rem 1rem',
-        backgroundColor: '#F3F3FF',
+        backgroundColor: 'var(--cloud-break)',
         minHeight: '200px'
       }}>
-        <h1 style={{ color: '#013463' }}>NSDA Website</h1>
+        <h1 style={{ color: 'var(--prussian-blue)' }}>NSDA Website</h1>
         <p>Under construction - Team members adding sections</p>
       </div>
       <CTA />
