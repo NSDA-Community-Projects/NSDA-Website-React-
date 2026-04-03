@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SectionWrapper from './common/SectionWrapper';
+import SectionWrapper from './SectionWrapper';
 
 export default function Form() {
   const [formData, setFormData] = useState({
