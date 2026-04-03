@@ -1,8 +1,9 @@
 import React from 'react';
 import './index.css';
-import CTA from './components/CTA';
 import Form from './components/Form';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
+import CTA from './components/CTA';
+
 function App() {
   return (
     <main>
@@ -15,8 +16,9 @@ function App() {
         <h1 style={{ color: 'var(--prussian-blue)' }}>NSDA Website</h1>
         <p>Under construction - Team members adding sections</p>
       </div>
-      <CTA />
+      
       <Form />
+      <CTA />
       <Footer />
     </main>
   );
