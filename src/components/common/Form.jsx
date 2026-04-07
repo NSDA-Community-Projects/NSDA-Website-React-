@@ -67,9 +67,9 @@ export default function Form() {
     <SectionWrapper id="register" backgroundColor="cloud">
       <div style={{ maxWidth: '650px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.</h2>
+          <h2 style={{ color: 'var(--prussian-blue)' }}>Become a Member.Serve the Ummah.</h2>
           <p style={{ fontSize: '1rem', marginTop: '0.5rem' }}>
-            Join 200+ developers building for the Ummah.
+            Be part of something bigger. Join NSDA to connect with fellow Muslim developers, build impactful projects, and grow your skills in a faith-centered community.
           </p>
         </div>
         
