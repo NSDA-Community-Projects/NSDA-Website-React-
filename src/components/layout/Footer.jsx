@@ -94,7 +94,7 @@ export default function Footer() {
                       e.target.style.paddingLeft = '5px';
                     }}
                     onMouseLeave={(e) => {
- e.target.style.color = 'rgba(255,255,255,0.8)';
+                      e.target.style.color = 'rgba(255,255,255,0.8)';
                       e.target.style.paddingLeft = '0';
                     }}
                   >
@@ -148,6 +148,8 @@ export default function Footer() {
             }}>
               <a 
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdPH5aY0OimzAYIL49Ks-tnJhZLkE8F9eVFiZWyPGfb0rbAZA/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{ 
                   display: 'flex',
                   alignItems: 'center',
@@ -191,6 +193,8 @@ export default function Footer() {
           <div style={{ display: 'flex', gap: '1rem', color: 'rgba(255,255,255,0.5)' }}>
             <span>🇪🇹</span>
             <span>BUILT FOR THE UMMAH</span>
+            <span>🤲</span>
+            <span>ALHAMDULILLAH</span>
           </div>
         </div>
       </div>

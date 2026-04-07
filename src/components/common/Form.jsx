@@ -46,7 +46,6 @@ export default function Form() {
     console.log('Form submitted:', formData);
     setSubmitted(true);
     
-    // Message stays for 5 seconds (fixed)
     setTimeout(() => setSubmitted(false), 5000);
     
     setFormData({
@@ -70,9 +69,9 @@ export default function Form() {
     <SectionWrapper id="register" backgroundColor="cloud">
       <div style={{ maxWidth: '650px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Become Part of something Bigger.</h2>
+          <h2 style={{ color: 'var(--prussian-blue)' }}>Become Part of Something Bigger.</h2>
           <p style={{ fontSize: '1rem', marginTop: '0.5rem' }}>
-         Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.
+            Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.
           </p>
         </div>
         
@@ -121,7 +120,7 @@ export default function Form() {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 EMAIL ADDRESS *
               </label>
-<input
+              <input
                 type="email"
                 name="email"
                 required
@@ -220,7 +219,7 @@ export default function Form() {
               <textarea
                 name="reason"
                 required
-rows="4"
+                rows="4"
                 value={formData.reason}
                 onChange={handleChange}
                 style={{
@@ -233,7 +232,8 @@ rows="4"
                 }}
                 onFocus={(e) => e.target.style.borderColor = 'var(--gold)'}
                 onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
-                placeholder="Share what excites you about joining NSDA..." />
+                placeholder="Share what excites you about joining NSDA..."
+              />
             </div>
             
             <button
@@ -255,6 +255,10 @@ rows="4"
             >
               Join NSDA Now
             </button>
+            
+            <p style={{ textAlign: 'center', fontSize: '0.75rem', marginTop: '1rem', color: '#999' }}>
+              We'll contact you on Telegram after review
+            </p>
           </form>
         )}
       </div>

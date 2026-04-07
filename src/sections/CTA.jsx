@@ -6,10 +6,9 @@ export default function CTA() {
       backgroundColor: '#0a1428',
       color: 'white',
       padding: '5rem 2rem',
-      margin: '0 auto'
+      textAlign: 'center'
     }}>
       <div style={{
-        textAlign: 'center',
         maxWidth: '800px',
         margin: '0 auto'
       }}>
@@ -26,8 +25,7 @@ export default function CTA() {
           marginBottom: '2rem', 
           fontSize: '1.1rem',
           lineHeight: '1.6',
-          color: 'white',
-          opacity: 0.95
+          color: 'white'
         }}>
           Join 200+ Muslim developers across the country. Be part of a community that grows together, codes together, and prays together.
         </p>
