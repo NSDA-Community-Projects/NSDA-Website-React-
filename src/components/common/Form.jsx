@@ -45,9 +45,7 @@ export default function Form() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setSubmitted(true);
-    
     setTimeout(() => setSubmitted(false), 5000);
-    
     setFormData({
       fullName: '',
       email: '',
@@ -69,9 +67,9 @@ export default function Form() {
     <SectionWrapper id="register" backgroundColor="cloud">
       <div style={{ maxWidth: '650px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Become Part of Something Bigger.</h2>
+          <h2 style={{ color: 'var(--prussian-blue)' }}>Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.</h2>
           <p style={{ fontSize: '1rem', marginTop: '0.5rem' }}>
-            Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.
+            Join 200+ developers building for the Ummah.
           </p>
         </div>
         
@@ -93,11 +91,13 @@ export default function Form() {
             borderRadius: '1rem',
             boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
           }}>
+            {/* Full Name */}
             <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+              <label htmlFor="fullName" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 FULL NAME *
               </label>
               <input
+                id="fullName"
                 type="text"
                 name="fullName"
                 required
@@ -116,11 +116,13 @@ export default function Form() {
               />
             </div>
             
+            {/* Email */}
             <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+              <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 EMAIL ADDRESS *
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 required
@@ -139,11 +141,13 @@ export default function Form() {
               />
             </div>
 
+            {/* Telegram Username */}
             <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+              <label htmlFor="telegram" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 TELEGRAM USERNAME *
               </label>
               <input
+                id="telegram"
                 type="text"
                 name="telegram"
                 required
@@ -162,11 +166,13 @@ export default function Form() {
               />
             </div>
             
+            {/* University */}
             <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+              <label htmlFor="university" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 UNIVERSITY / ORGANIZATION *
               </label>
               <select
+                id="university"
                 name="university"
                 required
                 value={formData.university}
@@ -187,11 +193,13 @@ export default function Form() {
               </select>
             </div>
             
+            {/* Field of Study */}
             <div style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+              <label htmlFor="fieldOfStudy" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
                 FIELD OF STUDY *
               </label>
               <select
+                id="fieldOfStudy"
                 name="fieldOfStudy"
                 required
                 value={formData.fieldOfStudy}
@@ -212,11 +220,13 @@ export default function Form() {
               </select>
             </div>
             
+            {/* Reason */}
             <div style={{ marginBottom: '1.5rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                Why do you want to join NSDA? *
+              <label htmlFor="reason" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
+                WHY DO YOU WANT TO JOIN NSDA? *
               </label>
               <textarea
+                id="reason"
                 name="reason"
                 required
                 rows="4"
