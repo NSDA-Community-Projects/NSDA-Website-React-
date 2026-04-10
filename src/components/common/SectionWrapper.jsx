@@ -6,7 +6,7 @@ export default function SectionWrapper({
   className = '', 
   backgroundColor = 'white' 
 }) {
-  const bgColor = backgroundColor === 'cloud' ? '#F3F3FF' : 'white';
+  const bgColor = backgroundColor === 'cloud' ? 'var(--cloud-break)' : 'var(--white)';
   
   return (
     <section 
@@ -17,7 +17,7 @@ export default function SectionWrapper({
         padding: '4rem 0'
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+      <div className="container">
         {children}
       </div>
     </section>

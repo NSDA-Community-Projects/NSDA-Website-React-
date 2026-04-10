@@ -1,0 +1,28 @@
+/* NSDA Brand Colors */
+:root {
+  --prussian-blue: #013463;
+  --gold: #DDA23A;
+  --cloud-break: #F3F3FF;
+  --black: #000000;
+  --white: #FFFFFF;
+  
+  /* Spacing - 8px system */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+  
+  /* Fonts */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
