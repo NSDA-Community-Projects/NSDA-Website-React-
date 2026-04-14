@@ -1,0 +1,98 @@
+.beginning {
+  background-color: #013463; 
+  padding: 80px 20px;
+  text-align: center;
+  color: #F3F3FF; 
+}
+.beginning-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #DDA23A;
+  font-weight: 700;
+  position: relative;
+}
+.beginning-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: #F3F3FF; 
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.beginning-text {
+  color: #F3F3FF;
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.mv-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 90px;
+  padding: 50px 20px;
+}
+.mission, .vision {
+  flex: 1 1 400px;
+  max-width: 400px;
+  background-color: #F3F3FF;
+  padding: 25px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  position: relative;
+  text-align: left;
+  border-left: 6px solid #DDA23A; 
+}
+.mission {
+  background-color: #013463 !important;
+}
+.mission-icon, .vision-icon {
+  margin-bottom: 15px;
+}
+.mission-title, .vision-title {
+  color: #013463; 
+  font-size: 21px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.mission-title {
+  color: #F3F3FF !important;
+}
+.mission-text, .vision-text {
+  color: #000000; 
+  font-size: 14px;
+  line-height: 1.7;
+}
+.mission-text {
+  color: #F3F3FF !important;
+}
+.about {
+  background-color: #F3F3FF;
+  padding: 80px 20px;
+  text-align: center;
+  color: #013463;
+}
+.about-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #013463;
+  font-weight: 700;
+  position: relative;
+}
+.about-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: #DDA23A;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.about-text {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+}
