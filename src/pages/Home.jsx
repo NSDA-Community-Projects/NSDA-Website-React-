@@ -70,21 +70,8 @@ function Home() {
         </div>
       </div>
       
-      {/* Projects Section - @islamicsoul4 will add */}
-      <div style={{
-        textAlign: 'center',
-        padding: '4rem 1rem',
-        backgroundColor: 'var(--cloud-break)',
-        minHeight: '200px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <div>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Projects</h2>
-          <p>Projects section coming soon from @islamicsoul4</p>
-        </div>
-      </div>
+      {/* Projects Section */}
+        <Projects />
       
       {/* Nujum Section - @han_bts_army will add */}
       <div style={{
