@@ -1,0 +1,130 @@
+.leadership-profile-page {
+  min-height: 100vh;
+  background: var(--cloud-break);
+}
+
+.leadership-profile-shell {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+
+.profile-header-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.profile-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, rgba(1, 52, 99, 0.2), rgba(221, 162, 58, 0.44));
+  border: 1px solid rgba(1, 52, 99, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--prussian-blue);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.profile-group {
+  margin-bottom: 0.2rem;
+  font-size: 0.86rem;
+  color: var(--prussian-blue);
+  font-weight: 600;
+}
+
+.profile-header-row h1 {
+  font-size: 2.2rem;
+  color: var(--black);
+  margin-bottom: 0.1rem;
+}
+
+.profile-role {
+  color: var(--gold);
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.profile-summary-card {
+  margin-bottom: var(--space-4);
+}
+
+.profile-summary-card h3,
+.profile-info-card h3 {
+  color: var(--prussian-blue);
+  margin-bottom: 0.55rem;
+}
+
+.profile-summary-card p,
+.profile-info-card p {
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.profile-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.profile-chip-row {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.profile-chip {
+  background: rgba(1, 52, 99, 0.1);
+  color: var(--prussian-blue);
+  border: 1px solid rgba(1, 52, 99, 0.15);
+  border-radius: 999px;
+  padding: 0.22rem 0.62rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.profile-chip-stack {
+  background: rgba(221, 162, 58, 0.17);
+  color: #654400;
+  border-color: rgba(221, 162, 58, 0.35);
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.profile-links a {
+  color: var(--prussian-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  width: fit-content;
+}
+
+.profile-actions {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .leadership-profile-shell {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .profile-header-row {
+    align-items: flex-start;
+  }
+
+  .profile-header-row h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}

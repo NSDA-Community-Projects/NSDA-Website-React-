@@ -2,6 +2,7 @@ import React from 'react';
 import Form from '../components/common/Form';
 import Footer from '../components/layout/Footer';
 import CTA from '../sections/CTA';
+import Leadership from '../sections/Leadership';
 
 function Home() {
   return (
@@ -102,21 +103,7 @@ function Home() {
         </div>
       </div>
       
-      {/* Leadership Section - @han_bts_army will add */}
-      <div style={{
-        textAlign: 'center',
-        padding: '4rem 1rem',
-        backgroundColor: 'var(--cloud-break)',
-        minHeight: '200px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <div>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Core Team</h2>
-          <p>Leadership section coming soon from @han_bts_army</p>
-        </div>
-      </div>
+      <Leadership />
       
       <Form />
       <CTA />
