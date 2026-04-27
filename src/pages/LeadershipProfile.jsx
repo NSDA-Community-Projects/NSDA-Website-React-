@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../components/layout/Footer';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
-import { getLeadershipMember } from '../data/leadership';
+import { getLeadershipMember, leadershipCategories } from '../data/leadership';
 import '../styles/leadership-profile.css';
 
 function InitialAvatar({ name }) {
@@ -18,6 +18,7 @@ function InitialAvatar({ name }) {
 
 export default function LeadershipProfile({ memberId }) {
   const member = getLeadershipMember(memberId);
+  const category = leadershipCategories.find((item) => item.id === member?.category);
 
   if (!member) {
     return (
@@ -42,53 +43,43 @@ export default function LeadershipProfile({ memberId }) {
           <div>
             <p className="profile-group">{member.groupTitle}</p>
             <h1>{member.name}</h1>
-            <p className="profile-role">{member.formalRole}</p>
+            <p className="profile-role">{member.role}</p>
           </div>
         </div>
 
         <Card className="profile-summary-card" hover={false}>
-          <h3>Who They Are</h3>
+          <h3>Overview</h3>
           <p>{member.summary}</p>
         </Card>
 
         <div className="profile-grid">
           <Card className="profile-info-card" hover={false}>
-            <h3>Tech Fields</h3>
-            <div className="profile-chip-row">
-              {member.techFields.map((field) => (
-                <span key={field} className="profile-chip">
-                  {field}
-                </span>
-              ))}
-            </div>
+            <h3>Role</h3>
+            <p>{member.role}</p>
           </Card>
 
           <Card className="profile-info-card" hover={false}>
-            <h3>Tech Stack</h3>
-            <div className="profile-chip-row">
-              {member.techStack.map((tech) => (
-                <span key={tech} className="profile-chip profile-chip-stack">
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <h3>University</h3>
+            <p>{member.university}</p>
           </Card>
 
-          <Card className="profile-info-card" hover={false}>
-            <h3>Formal Role in NSDA</h3>
-            <p>{member.formalRole}</p>
-          </Card>
+          {category ? (
+            <Card className="profile-info-card" hover={false}>
+              <h3>Category</h3>
+              <p>{category.title}</p>
+            </Card>
+          ) : null}
 
           <Card className="profile-info-card" hover={false}>
-            <h3>Contact</h3>
+            <h3>Connect</h3>
             <div className="profile-links">
-              <a href={`mailto:${member.email}`}>{member.email}</a>
-              <a href={member.x} target="_blank" rel="noopener noreferrer">
-                X Profile
-              </a>
-              <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
+              {member.linkedin ? (
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                  LinkedIn
+                </a>
+              ) : (
+                <p>No LinkedIn link available.</p>
+              )}
             </div>
           </Card>
         </div>

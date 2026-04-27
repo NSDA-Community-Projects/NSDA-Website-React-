@@ -17,7 +17,8 @@ export default function Card({
   className = '',
   padding = '1.25rem',
   hover = true,
-  style = {}
+  style = {},
+  ...props
 }) {
   const cardStyle = {
     ...baseStyle,
@@ -40,14 +41,14 @@ export default function Card({
 
   if (href) {
     return (
-      <a href={href} className={className} style={cardStyle} {...interactiveProps}>
+      <a href={href} className={className} style={cardStyle} {...interactiveProps} {...props}>
         {children}
       </a>
     );
   }
 
   return (
-    <div className={className} style={cardStyle} {...interactiveProps}>
+    <div className={className} style={cardStyle} {...interactiveProps} {...props}>
       {children}
     </div>
   );

@@ -19,12 +19,12 @@
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: linear-gradient(140deg, rgba(1, 52, 99, 0.2), rgba(221, 162, 58, 0.44));
-  border: 1px solid rgba(1, 52, 99, 0.25);
+  background: linear-gradient(145deg, rgba(221, 162, 58, 0.34), rgba(1, 52, 99, 0.9));
+  border: 1px solid rgba(1, 52, 99, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--prussian-blue);
+  color: var(--white);
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
@@ -69,28 +69,6 @@
   display: grid;
   gap: var(--space-3);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.profile-chip-row {
-  display: flex;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-}
-
-.profile-chip {
-  background: rgba(1, 52, 99, 0.1);
-  color: var(--prussian-blue);
-  border: 1px solid rgba(1, 52, 99, 0.15);
-  border-radius: 999px;
-  padding: 0.22rem 0.62rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.profile-chip-stack {
-  background: rgba(221, 162, 58, 0.17);
-  color: #654400;
-  border-color: rgba(221, 162, 58, 0.35);
 }
 
 .profile-links {
