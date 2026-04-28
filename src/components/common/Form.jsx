@@ -65,37 +65,22 @@ export default function Form() {
   
   return (
     <SectionWrapper id="register" backgroundColor="cloud">
-      <div style={{ maxWidth: '650px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ color: 'var(--prussian-blue)' }}>Become a Member.Serve the Ummah.</h2>
-          <p style={{ fontSize: '1rem', marginTop: '0.5rem' }}>
-            Be part of something bigger. Join NSDA to connect with fellow Muslim developers, build impactful projects, and grow your skills in a faith-centered community.
-          </p>
+      <div className="form-container">
+        <div className="form-header">
+          <h2>Become a Member. Serve the Ummah.</h2>
+          <p>Be part of something bigger. Join NSDA to connect with fellow Muslim developers, build impactful projects, and grow your skills in a faith-centered community.</p>
         </div>
         
         {submitted ? (
-          <div id="success-message" style={{
-            backgroundColor: 'var(--gold)',
-            color: 'var(--prussian-blue)',
-            padding: '2rem',
-            borderRadius: '0.75rem',
-            textAlign: 'center'
-          }}>
+          <div id="success-message" className="success-message">
             <h3>🎉 Welcome to NSDA!</h3>
             <p>We'll contact you soon on Telegram with next steps.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{
-            backgroundColor: 'white',
-            padding: '2rem',
-            borderRadius: '1rem',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
-          }}>
+          <form onSubmit={handleSubmit} className="form-box">
             {/* Full Name */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="fullName" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                FULL NAME *
-              </label>
+            <div className="form-group">
+              <label htmlFor="fullName" className="form-label">FULL NAME *</label>
               <input
                 id="fullName"
                 type="text"
@@ -103,24 +88,14 @@ export default function Form() {
                 required
                 value={formData.fullName}
                 onChange={handleChange}
-                placeholder="Johnathan Smith"
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem'
-                }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--gold)'}
-                onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+                placeholder="Your full name"
+                className="form-input"
               />
             </div>
             
             {/* Email */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                EMAIL ADDRESS *
-              </label>
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">EMAIL ADDRESS *</label>
               <input
                 id="email"
                 type="email"
@@ -128,24 +103,14 @@ export default function Form() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="johnt@example.com"
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem'
-                }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--gold)'}
-                onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+                placeholder="you@example.com"
+                className="form-input"
               />
             </div>
 
             {/* Telegram Username */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="telegram" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                TELEGRAM USERNAME *
-              </label>
+            <div className="form-group">
+              <label htmlFor="telegram" className="form-label">TELEGRAM USERNAME *</label>
               <input
                 id="telegram"
                 type="text"
@@ -153,38 +118,21 @@ export default function Form() {
                 required
                 value={formData.telegram}
                 onChange={handleChange}
-                placeholder="@username"
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem'
-                }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--gold)'}
-                onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+                placeholder="@yourusername"
+                className="form-input"
               />
             </div>
             
             {/* University */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="university" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                UNIVERSITY / ORGANIZATION *
-              </label>
+            <div className="form-group">
+              <label htmlFor="university" className="form-label">UNIVERSITY / ORGANIZATION *</label>
               <select
                 id="university"
                 name="university"
                 required
                 value={formData.university}
                 onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem',
-                  backgroundColor: 'white'
-                }}
+                className="form-select"
               >
                 <option value="">Select your university</option>
                 {universities.map((uni) => (
@@ -194,26 +142,17 @@ export default function Form() {
             </div>
             
             {/* Field of Study */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <label htmlFor="fieldOfStudy" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                FIELD OF STUDY *
-              </label>
+            <div className="form-group">
+              <label htmlFor="fieldOfStudy" className="form-label">FIELD OF STUDY *</label>
               <select
                 id="fieldOfStudy"
                 name="fieldOfStudy"
                 required
                 value={formData.fieldOfStudy}
                 onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem',
-                  backgroundColor: 'white'
-                }}
+                className="form-select"
               >
-                <option value="">Select your field</option>
+                <option value="">Select your field of study</option>
                 {fieldsOfStudy.map((field) => (
                   <option key={field} value={field}>{field}</option>
                 ))}
@@ -221,10 +160,8 @@ export default function Form() {
             </div>
             
             {/* Reason */}
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label htmlFor="reason" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--prussian-blue)' }}>
-                WHY DO YOU WANT TO JOIN NSDA? *
-              </label>
+            <div className="form-group">
+              <label htmlFor="reason" className="form-label">WHY DO YOU WANT TO JOIN NSDA? *</label>
               <textarea
                 id="reason"
                 name="reason"
@@ -232,42 +169,17 @@ export default function Form() {
                 rows="4"
                 value={formData.reason}
                 onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '0.5rem',
-                  fontSize: '1rem',
-                  resize: 'vertical'
-                }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--gold)'}
-                onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
-                placeholder="Share what excites you about joining NSDA..."
+                className="form-textarea"
+                placeholder="Share your vision for using tech to serve the Ummah..."
               />
             </div>
             
-            <button
-              type="submit"
-              style={{
-                width: '100%',
-                padding: '1rem',
-                backgroundColor: 'var(--prussian-blue)',
-                color: 'white',
-                fontSize: '1rem',
-                fontWeight: 'bold',
-                borderRadius: '0.5rem',
-                cursor: 'pointer',
-                border: 'none',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--gold)'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--prussian-blue)'}
-            >
+            <button type="submit" className="btn-submit">
               Join NSDA Now
             </button>
             
-            <p style={{ textAlign: 'center', fontSize: '0.75rem', marginTop: '1rem', color: '#999' }}>
-              We'll contact you on Telegram after review
+            <p className="form-note">
+              We'll contact you on Telegram after review.
             </p>
           </form>
         )}

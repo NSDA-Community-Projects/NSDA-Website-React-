@@ -1,56 +1,48 @@
 import React from 'react';
-import { FaLightbulb, FaEye } from 'react-icons/fa';
 
-const About = () => {
+export default function About() {
   return (
-    <section id="about">
-
-      <div className="about">
-        <h2 className="about-title">About NSDA</h2>
-
-        <p className="about-text">
-          The Nejm Student Developers Association (NSDA) is a nationwide initiative uniting Muslim students passionate about technology. We aim to nurture talent, promote collaboration, and build tech solutions rooted in Islamic values—empowering the next generation to serve the Ummah through innovation, mentorship, and purposeful development.
-        </p>
-      </div>
-
-      <div className="mv-container">
-
-        <div className="mission">
-          <div className="mission-icon">
-            <FaLightbulb size={40} color="#DDA23A" />
+    <section className="py-24 relative overflow-hidden" id="about" style={{ backgroundColor: 'var(--cloud-break)' }}>
+      <div className="container mx-auto px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6" style={{ backgroundColor: 'rgba(221, 162, 58, 0.1)', color: 'var(--gold)' }}>
+              Our Genesis
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ color: 'var(--prussian-blue)' }}>
+              Bridging Sacred Wisdom and Silicon Innovation
+            </h2>
+            <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+              <p>
+                Founded on <span className="font-semibold" style={{ color: 'var(--prussian-blue)' }}>March 31, 2025</span>, NSDA emerged from a vision to nurture a generation of developers who build for the dunya while securing their akhira.
+              </p>
+              <p>
+                Our mission is to create a digital sanctuary where Muslim technical talent can thrive, collaborate on open-source projects, and find mentorship that aligns with their spiritual identity.
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-bold text-xl mb-2" style={{ color: 'var(--prussian-blue)' }}>Our Vision</h4>
+                <p className="text-sm text-gray-500">To be the global hub for ethical software development excellence.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-xl mb-2" style={{ color: 'var(--prussian-blue)' }}>Our Mission</h4>
+                <p className="text-sm text-gray-500">Empowering students through technical mastery and spiritual grounding.</p>
+              </div>
+            </div>
           </div>
-
-          <h2 className="mission-title">Mission</h2>
-
-          <p className="mission-text">
-            To empower Muslim students across the nation providing mentorship, learning opportunities, and collaborative platforms rooted in Islamic values - enabling them to innovate, grow and contribute meaningfully to the Ummah through technology.
-          </p>
-        </div>
-
-        <div className="vision">
-          <div className="vision-icon">
-            <FaEye size={40} color="#DDA23A" />
+          <div>
+            <div className="relative">
+              <div className="absolute inset-0 rounded-lg transform translate-x-4 translate-y-4" style={{ backgroundColor: 'rgba(221, 162, 58, 0.1)' }}></div>
+              <img 
+                alt="Collaboration" 
+                className="rounded-lg shadow-xl relative z-10 w-full"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800"
+              />
+            </div>
           </div>
-
-          <h2 className="vision-title">Vision</h2>
-
-          <p className="vision-text">
-            To be the leading nationwide Muslim developer community that nurtures faith-driven tech talent, fostering a generation of innovators dedicated to uplifting the Ummah and making lasting positive impacts through technology.
-          </p>
         </div>
-
       </div>
-
-      <div className="beginning">
-        <h2 className="beginning-title">How We Began:</h2>
-
-        <p className="beginning-text">
-          NSDA was founded on March 31, 2025, through the collaboration of students from eight Ethiopian universities. Sparked by a shared vision to uplift the Ummah through technology, we united to create a faith-driven tech community that empowers Muslim students across the nation with purpose, knowledge, and support.
-        </p>
-      </div>
-
     </section>
   );
-};
-
-export default About;
+}
