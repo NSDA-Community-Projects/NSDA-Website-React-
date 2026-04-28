@@ -1,0 +1,81 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+h1, h2, h3 {
+  letter-spacing: -0.5px;
+}
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.beginning-title,
+.about-title,
+.card-title,
+.mission-title,
+.vision-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.what-we-do {
+  background-color: #DDA23A; 
+  padding: 80px 20px;
+  text-align: center;
+}
+.what-we-do .section-title {
+  color: #013463; 
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  position: relative;
+}
+.what-we-do .section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #F3F3FF; 
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.cards-container .card {
+  flex: 1 1 300px;
+}
+.cards-container .card:nth-child(4n+1),
+.cards-container .card:nth-child(4n+4) {
+  flex: 2 1 600px; 
+}
+.cards-container .card:nth-child(4n+2),
+.cards-container .card:nth-child(4n+3) {
+  flex: 1 1 250px; 
+}
+.card {
+  flex: 1 1 250px;
+  width: 100%;
+  max-width: none;
+  background-color: #F3F3FF;
+  color: #013463;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+.card-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000;
+}
