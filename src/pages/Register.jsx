@@ -7,7 +7,7 @@ function Register() {
   return (
     <main>
       <Navbar />
-      <div style={{ backgroundColor: 'var(--cloud-break)', minHeight: 'calc(100vh - 200px)', paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div style={{ paddingTop: '80px', backgroundColor: 'var(--cloud-break)', minHeight: '100vh' }}>
         <Form />
       </div>
       <Footer />
