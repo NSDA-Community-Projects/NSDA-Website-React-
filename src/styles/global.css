@@ -1,9 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import './variables.css';
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --prussian-blue: #013463;
+    --gold: #DDA23A;
+    --cloud-break: #F3F3FF;
+    --black: #000000;
+    --white: #FFFFFF;
+    
+    /* Spacing - 8px system */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 2.5rem;
+    --space-6: 3rem;
+    --space-8: 4rem;
+    --space-10: 5rem;
+    
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    color: var(--black);
+    background-color: var(--white);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}
+
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -14,37 +52,28 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: var(--font-body);
-  color: var(--black);
-  background-color: var(--white);
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-}
-
+/* Typography - Responsive */
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: var(--space-4);
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  margin-bottom: var(--space-3);
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 5vw, 1.5rem);
   margin-bottom: var(--space-2);
 }
 
 p {
   margin-bottom: var(--space-2);
   color: #666;
+  font-size: clamp(0.875rem, 4vw, 1rem);
 }
 
+/* Links & Buttons */
 a {
   text-decoration: none;
   color: inherit;
@@ -58,20 +87,182 @@ button {
   transition: all 0.3s ease;
 }
 
+/* Container - Responsive */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-2);
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--prussian-blue);
+}
+
+/* ======================================== */
+/* FORM STYLES - Fully Responsive */
+/* ======================================== */
+
+.form-container {
+  max-width: 650px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  color: var(--prussian-blue);
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.form-header p {
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  color: #666;
+}
+
+.form-box {
+  background-color: white;
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--prussian-blue);
+  font-size: clamp(0.75rem, 3vw, 0.85rem);
+  letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(221, 162, 58, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--prussian-blue);
+  color: white;
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.success-message {
+  background-color: var(--gold);
+  color: var(--prussian-blue);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.success-message h3 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.form-note {
+  text-align: center;
+  font-size: clamp(0.7rem, 3vw, 0.75rem);
+  margin-top: 1rem;
+  color: #999;
+}
+
+/* ======================================== */
+/* MOBILE RESPONSIVENESS
+/* ======================================== */
+
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  .mobile-menu-btn {
+    display: block !important;
   }
-  h2 {
-    font-size: 1.75rem;
+  
+  .desktop-nav {
+    display: none !important;
   }
-  h3 {
-    font-size: 1.25rem;
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .grid {
+    gap: 1rem;
+  }
+  
+  /* Better spacing for sections on mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* Small devices */
+@media (max-width: 480px) {
+  .form-box {
+    padding: 1.25rem;
+  }
+  
+  .btn-submit {
+    padding: 0.75rem;
   }
 }

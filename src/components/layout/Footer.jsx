@@ -25,18 +25,21 @@ export default function Footer() {
     <footer style={{ 
       backgroundColor: '#0a0f1a',
       color: 'rgba(255,255,255,0.9)',
-      padding: '4rem 0 2rem 0'
+      padding: '3rem 0 2rem 0'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+        {/* ONE ROW - changed from flex-wrap to nowrap on desktop */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2.5rem',
-          marginBottom: '3rem'
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          gap: '2rem',
+          marginBottom: '3rem',
+          flexWrap: 'wrap' // This allows wrapping on mobile, but stays one row on desktop
         }}>
           
           {/* Logo & Description */}
-          <div>
+          <div style={{ flex: '1', minWidth: '180px' }}>
             <h2 style={{ color: 'var(--gold)', marginBottom: '0.75rem', fontSize: '1.8rem' }}>
               NSDA
             </h2>
@@ -46,7 +49,7 @@ export default function Footer() {
           </div>
           
           {/* Navigation */}
-          <div>
+          <div style={{ flex: '0.5', minWidth: '100px' }}>
             <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>NAVIGATION</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {navLinks.map((link) => (
@@ -76,7 +79,7 @@ export default function Footer() {
           </div>
           
           {/* Resources */}
-          <div>
+          <div style={{ flex: '0.5', minWidth: '100px' }}>
             <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>RESOURCES</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {resourceLinks.map((link) => (
@@ -106,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Connect / Social Links */}
-          <div>
+          <div style={{ flex: '0.8', minWidth: '160px' }}>
             <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>CONNECT WITH US</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {socialLinks.map((link) => (
@@ -183,7 +186,7 @@ export default function Footer() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexWrap: 'wrap',
+          flexWrap: 'nowrap',
           gap: '1rem',
           fontSize: '0.75rem'
         }}>
