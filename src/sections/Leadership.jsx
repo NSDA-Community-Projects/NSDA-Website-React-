@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionWrapper from '../components/common/SectionWrapper';
 import Card from '../components/common/Card';
-import { leadershipGroups, leadershipValues } from '../data/leadership';
+import { leadershipCategories, leadershipGroups, leadershipValues } from '../data/leadership';
 import '../styles/leadership.css';
 
 function InitialAvatar({ name, className = 'leadership-avatar' }) {
@@ -15,6 +15,11 @@ function InitialAvatar({ name, className = 'leadership-avatar' }) {
   return <div className={className}>{initials}</div>;
 }
 
+function getCategoryTitle(categoryId) {
+  const category = leadershipCategories.find((item) => item.id === categoryId);
+  return category ? category.title : categoryId;
+}
+
 function LeadershipMemberCard({ member }) {
   return (
     <Card href={`/leadership/${member.id}`} className="leadership-member-card">
@@ -24,6 +29,9 @@ function LeadershipMemberCard({ member }) {
           <h4>{member.name}</h4>
           <p className="leadership-role">{member.role}</p>
           <p className="leadership-university">{member.university}</p>
+          <span className="leadership-category-badge">
+            {getCategoryTitle(member.category)}
+          </span>
         </div>
       </div>
 
