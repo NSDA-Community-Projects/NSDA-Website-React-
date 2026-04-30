@@ -236,6 +236,10 @@ button {
     display: block !important;
   }
   
+  .desktop-nav {
+    display: none !important;
+  }
+  
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -260,16 +264,5 @@ button {
   
   .btn-submit {
     padding: 0.75rem;
-  }
-}
-/* Mobile Menu Button - Make it visible on small screens */
-@media (max-width: 768px) {
-  .mobile-menu-btn {
-    display: block !important;
-  }
-  
-  /* Hide desktop navigation on mobile */
-  nav div[style*="gap: 32px"] {
-    display: none !important;
   }
 }

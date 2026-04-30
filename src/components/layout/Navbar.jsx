@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+// Move sections OUTSIDE component to prevent recreation on every render
+const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('');
-
-  const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
   // Track scroll for navbar background change
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname, sections]);
+  }, [location.pathname]); // Removed 'sections' from dependency array since it's now outside
 
   const scrollToSection = (elementId) => {
     const element = document.getElementById(elementId);
@@ -59,7 +61,7 @@ export default function Navbar() {
 
   const handleHomeClick = () => {
     if (location.pathname !== '/') {
-      window.location.href = '/';
+      navigate('/'); // Fixed: use navigate instead of window.location.href
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('');
@@ -69,7 +71,7 @@ export default function Navbar() {
 
   const navigateToHomeAndScroll = (elementId) => {
     if (location.pathname !== '/') {
-      window.location.href = `/#${elementId}`;
+      navigate(`/#${elementId}`); // Fixed: use navigate instead of window.location.href
     } else {
       scrollToSection(elementId);
     }
@@ -88,7 +90,7 @@ export default function Navbar() {
 
   return (
     <nav style={{ 
-      backgroundColor: isScrolled ? 'white' : 'white',
+      backgroundColor: 'white', // Fixed: removed redundant ternary
       boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.05)',
       position: 'fixed',
       top: 0,
@@ -100,198 +102,31 @@ export default function Navbar() {
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
         
-        {/* Logo with JPG Image + NSDA Text */}
-        <div 
-          onClick={handleHomeClick} 
-          style={{ 
-            cursor: 'pointer', 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '12px'
-          }}
-        >
+        {/* Logo */}
+        <div onClick={handleHomeClick} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img 
             src="/nsda.png" 
             alt="NSDA Logo" 
-            style={{ 
-              height: '45px', 
-              width: 'auto',
-              display: 'block'
-            }}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.style.display = 'none';
-            }}
+            style={{ height: '45px', width: 'auto', display: 'block' }}
+            onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }}
           />
-          <span style={{ 
-            fontSize: '24px', 
-            fontWeight: '700', 
-            color: '#013463',
-            letterSpacing: '1px',
-            fontFamily: "'Space Grotesk', sans-serif"
-          }}>
-            NSDA
-          </span>
+          <span style={{ fontSize: '24px', fontWeight: '700', color: '#013463', letterSpacing: '1px' }}>NSDA</span>
         </div>
 
-        {/* Desktop Navigation */}
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button
-            onClick={handleHomeClick}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            Home
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('about')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'about' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            About
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('what-we-do')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'what-we-do' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            What We Do
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('mentorship')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'mentorship' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Mentorship
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('projects')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'projects' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Projects
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('nujum')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'nujum' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Nujum
-          </button>
-          
-          <button
-            onClick={() => navigateToHomeAndScroll('leadership')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: (active === 'leadership' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Leadership
-          </button>
-          
-          <Link
-            to="/register"
-            style={{
-              backgroundColor: '#DDA23A',
-              color: '#013463',
-              padding: '8px 24px',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              transition: 'opacity 0.2s ease'
-            }}
-            onMouseEnter={(e) => e.target.style.opacity = '0.85'}
-            onMouseLeave={(e) => e.target.style.opacity = '1'}
-          >
-            Register
-          </Link>
+        {/* Desktop Navigation - Added className for better targeting */}
+        <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <button onClick={handleHomeClick} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Home</button>
+          <button onClick={() => navigateToHomeAndScroll('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'about' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</button>
+          <button onClick={() => navigateToHomeAndScroll('what-we-do')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'what-we-do' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</button>
+          <button onClick={() => navigateToHomeAndScroll('mentorship')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'mentorship' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Mentorship</button>
+          <button onClick={() => navigateToHomeAndScroll('projects')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'projects' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Projects</button>
+          <button onClick={() => navigateToHomeAndScroll('nujum')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'nujum' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Nujum</button>
+          <button onClick={() => navigateToHomeAndScroll('leadership')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'leadership' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Leadership</button>
+          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '8px 24px', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 'bold', textTransform: 'uppercase' }} onMouseEnter={(e) => e.target.style.opacity = '0.85'} onMouseLeave={(e) => e.target.style.opacity = '1'}>Register</Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{ display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#013463' }}
-          className="mobile-menu-btn"
-        >
-          ☰
-        </button>
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#013463' }} className="mobile-menu-btn">☰</button>
       </div>
 
       {/* Mobile Menu */}

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+// Move sections OUTSIDE component to prevent recreation on every render
+const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 // ========================================
-// NAVBAR COMPONENT
+// NAVBAR COMPONENT (FIXED VERSION)
 // ========================================
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('');
-
-  const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +48,7 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname, sections]);
+  }, [location.pathname]);
 
   const scrollToSection = (elementId) => {
     const element = document.getElementById(elementId);
@@ -59,7 +61,7 @@ function Navbar() {
 
   const handleHomeClick = () => {
     if (location.pathname !== '/') {
-      window.location.href = '/';
+      navigate('/');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('');
@@ -69,7 +71,7 @@ function Navbar() {
 
   const navigateToHomeAndScroll = (elementId) => {
     if (location.pathname !== '/') {
-      window.location.href = `/#${elementId}`;
+      navigate(`/#${elementId}`);
     } else {
       scrollToSection(elementId);
     }
@@ -88,7 +90,7 @@ function Navbar() {
 
   return (
     <nav style={{ 
-      backgroundColor: isScrolled ? 'white' : 'white',
+      backgroundColor: 'white',
       boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.05)',
       position: 'fixed',
       top: 0,
@@ -110,7 +112,7 @@ function Navbar() {
           <span style={{ fontSize: '24px', fontWeight: '700', color: '#013463', letterSpacing: '1px' }}>NSDA</span>
         </div>
 
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
           <button onClick={handleHomeClick} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Home</button>
           <button onClick={() => navigateToHomeAndScroll('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'about' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</button>
           <button onClick={() => navigateToHomeAndScroll('what-we-do')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'what-we-do' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</button>
@@ -198,7 +200,7 @@ function About() {
           <div>
             <div className="relative">
               <div className="absolute inset-0 rounded-lg transform translate-x-4 translate-y-4" style={{ backgroundColor: 'rgba(221, 162, 58, 0.1)' }}></div>
-              <img alt="Collaboration" className="rounded-lg shadow-xl relative z-10 w-full" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800" />
+              <img alt="Collaboration" className="rounded-lg shadow-xl relative z-10 w-full" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" />
             </div>
           </div>
         </div>
@@ -369,7 +371,7 @@ function Nujum() {
 }
 
 // ========================================
-// LEADERSHIP COMPONENT
+// LEADERSHIP COMPONENT (FIXED - No placeholder comment)
 // ========================================
 function Leadership() {
   const foundingTeam = [
