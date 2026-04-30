@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-// Move sections OUTSIDE component to prevent recreation on every render
+// Move sections OUTSIDE component
 const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 // ========================================
-// NAVBAR COMPONENT (FIXED VERSION)
+// NAVBAR COMPONENT
 // ========================================
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -61,7 +60,7 @@ function Navbar() {
 
   const handleHomeClick = () => {
     if (location.pathname !== '/') {
-      navigate('/');
+      window.location.href = '/';
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('');
@@ -71,7 +70,7 @@ function Navbar() {
 
   const navigateToHomeAndScroll = (elementId) => {
     if (location.pathname !== '/') {
-      navigate(`/#${elementId}`);
+      window.location.href = `/#${elementId}`;
     } else {
       scrollToSection(elementId);
     }
@@ -102,14 +101,28 @@ function Navbar() {
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
         
+        {/* Logo with nsda.png from public folder */}
         <div onClick={handleHomeClick} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img 
             src="/nsda.png" 
             alt="NSDA Logo" 
-            style={{ height: '45px', width: 'auto', display: 'block' }}
-            onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }}
+            style={{ 
+              height: '45px', 
+              width: 'auto',
+              display: 'block'
+            }}
+            onError={(e) => { 
+              e.target.onerror = null; 
+              e.target.style.display = 'none';
+            }}
           />
-          <span style={{ fontSize: '24px', fontWeight: '700', color: '#013463', letterSpacing: '1px' }}>NSDA</span>
+          <span style={{ 
+            fontSize: '24px', 
+            fontWeight: '700', 
+            color: '#013463', 
+            letterSpacing: '1px',
+            display: 'block'
+          }}>NSDA</span>
         </div>
 
         <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -143,7 +156,7 @@ function Navbar() {
 }
 
 // ========================================
-// HERO COMPONENT
+// HERO COMPONENT - using hero-image.jpg from public folder
 // ========================================
 function Hero() {
   return (
@@ -165,7 +178,11 @@ function Hero() {
         </div>
         <div className="lg:col-span-5 relative">
           <div className="aspect-square rounded-lg overflow-hidden shadow-2xl">
-            <img alt="Tech Workspace" className="w-full h-full object-cover" src="/hero-image.jpg" />
+            <img 
+              alt="Coding workspace" 
+              className="w-full h-full object-cover" 
+              src="/hero-image.jpg"
+            />
           </div>
           <div className="absolute -bottom-4 -left-4 p-3 rounded-lg shadow-lg" style={{ backgroundColor: 'var(--gold)' }}>
             <span className="text-2xl font-extrabold block mb-0.5" style={{ color: 'var(--prussian-blue)' }}>2025</span>
@@ -178,7 +195,7 @@ function Hero() {
 }
 
 // ========================================
-// ABOUT COMPONENT
+// ABOUT COMPONENT - using Unsplash URL
 // ========================================
 function About() {
   return (
@@ -200,7 +217,11 @@ function About() {
           <div>
             <div className="relative">
               <div className="absolute inset-0 rounded-lg transform translate-x-4 translate-y-4" style={{ backgroundColor: 'rgba(221, 162, 58, 0.1)' }}></div>
-              <img alt="Collaboration" className="rounded-lg shadow-xl relative z-10 w-full" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" />
+              <img 
+                alt="Team collaboration" 
+                className="rounded-lg shadow-xl relative z-10 w-full" 
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800"
+              />
             </div>
           </div>
         </div>
@@ -371,7 +392,7 @@ function Nujum() {
 }
 
 // ========================================
-// LEADERSHIP COMPONENT (FIXED - No placeholder comment)
+// LEADERSHIP COMPONENT
 // ========================================
 function Leadership() {
   const foundingTeam = [
