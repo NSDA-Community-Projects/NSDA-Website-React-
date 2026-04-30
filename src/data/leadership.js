@@ -221,6 +221,7 @@ export const leadershipGroups = [
   {
     id: 'founders',
     title: 'Founders',
+    stageLabel: 'Establishment',
     description: 'Founding leadership shaping NSDA strategy, execution, and long-term community direction.',
     sidebarTitle: 'Presidency & Founding Team',
     sidebarDescription:
@@ -230,6 +231,7 @@ export const leadershipGroups = [
   {
     id: 'second-batch',
     title: 'Second Batch Leadership',
+    stageLabel: 'Growth Phase',
     description: 'Emerging leadership continuing the work through communication, technical, content, and production roles.',
     sidebarTitle: 'Next Leadership Batch',
     sidebarDescription:
