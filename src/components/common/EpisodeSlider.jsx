@@ -57,8 +57,7 @@ const EpisodeSlider = ({ episodes, onCardClick }) => {
                 onClick={() => onCardClick(ep)}
                className="w-full sm:w-1/3 bg-surface rounded-[2rem] overflow-hidden border border-primary/20 shadow-[0_8px_30px_rgba(1,52,99,0.08)] hover:shadow-[0_20px_50px_rgba(1,52,99,0.12)] transition-all duration-500 cursor-pointer group"
               >
-                {/* ⬆️ UPDATED: full design system card */}
-
+              
                 {/* IMAGE */}
                 <div className="aspect-video relative overflow-hidden">
                   <img
@@ -99,7 +98,7 @@ const EpisodeSlider = ({ episodes, onCardClick }) => {
                     />
 
                     <span className="text-xs text-primary/60 font-body">
-                      {/* ⬆️ UPDATED: body font + primary tint */}
+                    
                       {ep.author}
                     </span>
 
@@ -116,7 +115,7 @@ const EpisodeSlider = ({ episodes, onCardClick }) => {
           onClick={nextSlide}
           className="w-12 h-12 rounded-full bg-surface border border-primary/10 hover:bg-primary/5 transition flex items-center justify-center text-primary"
         >
-          {/* ⬆️ UPDATED: removed dark navy */}
+          
           ›
         </button>
       </div>

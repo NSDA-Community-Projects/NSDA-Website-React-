@@ -6,5 +6,4 @@ const Card = ({ children, className, onClick }) => {
   );
 };
 
-// ADD THIS LINE AT THE BOTTOM
 export default Card;
