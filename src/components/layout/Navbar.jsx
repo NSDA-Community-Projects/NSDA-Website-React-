@@ -1,192 +1,148 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const [activeHash, setActiveHash] = useState('');
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    setActiveHash(location.hash);
-  }, [location]);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      const timer = setTimeout(() => {
+        setActiveSection('');
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 150;
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            return;
+          }
+        }
+      }
+      setActiveSection('');
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
 
   const scrollToSection = (elementId) => {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(elementId);
       window.history.pushState(null, '', `/#${elementId}`);
-      setActiveHash(`#${elementId}`);
     }
   };
 
-  const isActive = (path, hash = null) => {
-    if (hash) {
-      return activeHash === hash;
+  const handleHomeClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('');
+      window.history.pushState(null, '', '/');
     }
-    return location.pathname === path && !activeHash;
   };
+
+  const isActive = () => {
+    if (location.pathname === '/register') return 'register';
+    if (location.pathname === '/projects') return 'projects';
+    if (location.pathname === '/') {
+      if (activeSection) return activeSection;
+      return 'home';
+    }
+    return null;
+  };
+
+  const active = isActive();
 
   return (
-    <nav style={{ backgroundColor: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', position: 'sticky', top: 0, zIndex: 50 }}>
+    <nav style={{ 
+      backgroundColor: 'white',
+      boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.05)',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1000,
+      transition: 'all 0.3s ease',
+      width: '100%'
+    }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
         
-        {/* Logo */}
-       {/* Logo */}
-<Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-  <img 
-    src="/src/assets/logo/NSDA-logo.jpg" 
-    alt="NSDA Logo" 
-    style={{ height: '35px' }}
-  />
-  <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#013463' }}>
-    NSDA
-  </span>
-</Link>
-
-        {/* Desktop Navigation */}
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <button
-            onClick={() => window.location.href = '/'}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: isActive('/') ? '#000000' : '#000000',
-              borderBottom: isActive('/') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Home
-          </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: isActive(null, '#about') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            About
-          </button>
-          <button
-            onClick={() => scrollToSection('what-we-do')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: isActive(null, '#what-we-do') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            What We Do
-          </button>
-          <button
-            onClick={() => scrollToSection('nujum')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: isActive(null, '#nujum') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Nujum
-          </button>
-          <button
-            onClick={() => scrollToSection('projects')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: isActive(null, '#projects') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollToSection('leadership')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#000000',
-              borderBottom: isActive(null, '#leadership') ? '2px solid #DDA23A' : '2px solid transparent',
-              paddingBottom: '4px',
-              fontSize: '14px',
-              fontWeight: '500',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-          >
-            Leadership
-          </button>
-          <Link
-            to="/register"
-            style={{
-              backgroundColor: '#DDA23A',
-              color: '#013463',
-              padding: '8px 24px',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-            onMouseEnter={(e) => e.target.style.opacity = '0.85'}
-            onMouseLeave={(e) => e.target.style.opacity = '1'}
-          >
-            Register
-          </Link>
+        <div onClick={handleHomeClick} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img 
+            src="/nsda.png" 
+            alt="NSDA Logo" 
+            className="h-[45px] w-auto block"
+            onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }}
+          />
+          <span style={{ fontSize: '24px', fontWeight: '700', color: '#013463', letterSpacing: '1px' }}>NSDA</span>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{ display: 'none', background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer' }}
-          className="mobile-menu-btn"
-        >
-          ☰
-        </button>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* Home - Link */}
+          <Link to="/" style={{ textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Home</Link>
+          
+          {/* About - Scroll on homepage, link on other pages */}
+          {location.pathname === '/' ? (
+            <button onClick={() => scrollToSection('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'about' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</button>
+          ) : (
+            <Link to="/#about" style={{ textDecoration: 'none', color: '#000000', borderBottom: '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</Link>
+          )}
+          
+          {/* What We Do - Scroll on homepage, link on other pages */}
+          {location.pathname === '/' ? (
+            <button onClick={() => scrollToSection('what-we-do')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'what-we-do' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</button>
+          ) : (
+            <Link to="/#what-we-do" style={{ textDecoration: 'none', color: '#000000', borderBottom: '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</Link>
+          )}
+          
+          {/* Projects - LINK to separate page */}
+          <Link to="/projects" style={{ textDecoration: 'none', color: '#000000', borderBottom: active === 'projects' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Projects</Link>
+          
+          {/* Nujum - LINK to separate page */}
+          <Link to="/nujum" style={{ textDecoration: 'none', color: '#000000', borderBottom: active === 'nujum' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Nujum</Link>
+          
+          {/* Leadership - LINK to separate page */}
+          <Link to="/leadership" style={{ textDecoration: 'none', color: '#000000', borderBottom: active === 'leadership' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Leadership</Link>
+          
+          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '8px 24px', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 'bold', textTransform: 'uppercase' }} onMouseEnter={(e) => e.target.style.opacity = '0.85'} onMouseLeave={(e) => e.target.style.opacity = '1'}>Register</Link>
+        </div>
+
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#013463' }} className="mobile-menu-btn">☰</button>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div style={{ padding: '16px 24px', borderTop: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <Link to="/" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <a href="#about" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>About</a>
-          <a href="#what-we-do" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>What We Do</a>
-          <a href="#nujum" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>Nujum</a>
-          <a href="#projects" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>Projects</a>
-          <a href="#leadership" style={{ color: '#000000', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>Leadership</a>
-          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '8px', borderRadius: '8px', textAlign: 'center', textDecoration: 'none' }} onClick={() => setIsMenuOpen(false)}>Register</Link>
+        <div style={{ padding: '16px 24px', borderTop: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '12px', backgroundColor: 'white' }}>
+          <Link to="/" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/#about" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link to="/#what-we-do" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>What We Do</Link>
+          <Link to="/projects" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>Projects</Link>
+          <Link to="/nujum" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>Nujum</Link>
+          <Link to="/leadership" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>Leadership</Link>
+          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '10px', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', fontWeight: 'bold' }} onClick={() => setIsMenuOpen(false)}>Register</Link>
         </div>
       )}
     </nav>
