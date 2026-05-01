@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const sections = ['about', 'what-we-do', 'projects', 'nujum', 'leadership'];
+const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
