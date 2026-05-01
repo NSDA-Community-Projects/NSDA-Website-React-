@@ -89,12 +89,8 @@ export const episodes = [
   },
 ];
 
-export const FEATURED_EPISODE = {
-  episodeNumber: "24",
-  title: "Ethical AI: Building with Barakah",
-  author: "Dr. Amina El-Sayed",
-  authorPhoto: "https://ui-avatars.com/api/?name=Amina+El-Sayed&background=fdbe54&color=0a192f",
-  duration: "52:00",
-  videoUrl: "https://youtu.be/ceixs7NsVoo?si=4qcOZ8ECukiZWxfa", 
-  description: "Integrating ethical frameworks into modern AI development to ensure technology serves humanity faithfully."
+export const getLatestEpisode = (episodes) => {
+  return [...episodes].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  )[0];
 };
