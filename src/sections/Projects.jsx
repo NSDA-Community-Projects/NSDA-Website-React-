@@ -6,33 +6,6 @@ import { projects } from "../data/projects";
 function Projects() {
   return (
     <>
-      {/* Top Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-[#faf8ff]/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(1,52,99,0.06)]">
-        <div className="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
-          <div className="text-2xl font-bold font-['Space_Grotesk'] text-primary">
-            NSDA
-          </div>
-          
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8 font-['Space_Grotesk'] text-sm tracking-tight">
-            <a className="text-primary opacity-70 hover:opacity-100 transition-opacity" href="#">Home</a>
-            <a className="text-primary opacity-70 hover:opacity-100 transition-opacity" href="#">About</a>
-            <a className="text-primary opacity-70 hover:opacity-100 transition-opacity" href="#">What We Do</a>
-            <a className="text-primary opacity-70 hover:opacity-100 transition-opacity" href="#">Nujum</a>
-            <a className="text-secondary border-b-2 border-secondary pb-1 font-bold" href="#">Projects</a>
-            <a className="text-primary opacity-70 hover:opacity-100 transition-opacity" href="#">Leadership</a>
-            <button className="ml-4 px-6 py-2 bg-primary text-white rounded-xl font-bold hover:scale-95 transition-transform duration-200">
-              Join Us
-            </button>
-          </div>
-          
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <span className="material-symbols-outlined text-primary">menu</span>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <header className="relative pt-32 pb-20 px-8 overflow-hidden">
         <div className="muqarnas-watermark -top-40 -right-40"></div>
@@ -311,23 +284,6 @@ function Projects() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-primary w-full py-12 px-8 border-t border-primary-container">
-        <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto space-y-4 md:space-y-0">
-          <div className="text-lg font-['Space_Grotesk'] text-secondary-container">NSDA</div>
-          <div className="flex flex-wrap justify-center gap-8 font-['Helvetica_Neue'] text-xs uppercase tracking-widest">
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Terms of Service</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Contact Us</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">GitHub</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">LinkedIn</a>
-          </div>
-          <div className="font-['Helvetica_Neue'] text-xs uppercase tracking-widest text-white/60">
-            © 2024 Nejm Student Developers Association. Built for the Digital Sanctuary.
-          </div>
-        </div>
-      </footer>
 
       {/* Add the watermark styles */}
       <style>{`
