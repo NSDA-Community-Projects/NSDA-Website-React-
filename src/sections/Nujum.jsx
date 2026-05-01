@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SectionWrapper from "../components/common/sectionWrapper";
+import SectionWrapper from "../components/common/SectionWrapper";
 import { episodes } from "../data/nujum";
 import EpisodeSlider from "../components/common/EpisodeSlider";
 import { Play } from "lucide-react";
@@ -120,7 +120,7 @@ const featuredVideoId = getVideoId(latestEpisode?.videoUrl);
 
     {/* Removed "EPISODE" text - now only shows the number */}
     <span className="text-[10px] font-bold tracking-[0.2em] text-white/90 uppercase">
-      {latestEpisode?.episodeNumber}
+      {latestEpisode?.id}
     </span>
   </div>
   
