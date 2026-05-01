@@ -7,12 +7,9 @@ export default function Footer() {
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'What We Do', href: '#whatwedo' },
-    { name: 'Nujum', href: '#nujum' }
-  ];
-
-  const resourceLinks = [
     { name: 'Projects', href: '#projects' },
-    { name: 'Leadership', href: '#leadership' },
+    { name: 'Nujum', href: '#nujum' },
+    { name: 'Leadership', href: '#leadership' }
   ];
 
   const socialLinks = [
@@ -28,14 +25,13 @@ export default function Footer() {
       padding: '3rem 0 2rem 0'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
-        {/* ONE ROW - changed from flex-wrap to nowrap on desktop */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           gap: '2rem',
           marginBottom: '3rem',
-          flexWrap: 'wrap' // This allows wrapping on mobile, but stays one row on desktop
+          flexWrap: 'wrap'
         }}>
           
           {/* Logo & Description */}
@@ -49,40 +45,10 @@ export default function Footer() {
           </div>
           
           {/* Navigation */}
-          <div style={{ flex: '0.5', minWidth: '100px' }}>
+          <div style={{ flex: '0.8', minWidth: '180px' }}>
             <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>NAVIGATION</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {navLinks.map((link) => (
-                <li key={link.name} style={{ marginBottom: '0.5rem' }}>
-                  <a 
-                    href={link.href} 
-                    style={{ 
-                      color: 'rgba(255,255,255,0.8)',
-                      textDecoration: 'none',
-                      fontSize: '0.85rem',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.color = 'var(--gold)';
-                      e.target.style.paddingLeft = '5px';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.color = 'rgba(255,255,255,0.8)';
-                      e.target.style.paddingLeft = '0';
-                    }}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Resources */}
-          <div style={{ flex: '0.5', minWidth: '100px' }}>
-            <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>RESOURCES</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {resourceLinks.map((link) => (
                 <li key={link.name} style={{ marginBottom: '0.5rem' }}>
                   <a 
                     href={link.href} 
@@ -186,7 +152,7 @@ export default function Footer() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexWrap: 'nowrap',
+          flexWrap: 'wrap',
           gap: '1rem',
           fontSize: '0.75rem'
         }}>

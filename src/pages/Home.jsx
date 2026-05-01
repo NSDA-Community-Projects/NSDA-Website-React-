@@ -1,162 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 
 // Move sections OUTSIDE component
 const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
 // ========================================
-// NAVBAR COMPONENT
-// ========================================
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const [activeSection, setActiveSection] = useState('');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      const timer = setTimeout(() => {
-        setActiveSection('');
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150;
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            return;
-          }
-        }
-      }
-      setActiveSection('');
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
-
-  const scrollToSection = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(elementId);
-      window.history.pushState(null, '', `/#${elementId}`);
-    }
-  };
-
-  const handleHomeClick = () => {
-    if (location.pathname !== '/') {
-      window.location.href = '/';
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setActiveSection('');
-      window.history.pushState(null, '', '/');
-    }
-  };
-
-  const navigateToHomeAndScroll = (elementId) => {
-    if (location.pathname !== '/') {
-      window.location.href = `/#${elementId}`;
-    } else {
-      scrollToSection(elementId);
-    }
-  };
-
-  const isActive = () => {
-    if (location.pathname === '/register') return 'register';
-    if (location.pathname === '/') {
-      if (activeSection) return activeSection;
-      return 'home';
-    }
-    return null;
-  };
-
-  const active = isActive();
-
-  return (
-    <nav style={{ 
-      backgroundColor: 'white',
-      boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : '0 1px 3px rgba(0,0,0,0.05)',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      transition: 'all 0.3s ease',
-      width: '100%'
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
-        
-        {/* Logo with nsda.png from public folder */}
-        <div onClick={handleHomeClick} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img 
-            src="/nsda.png" 
-            alt="NSDA Logo" 
-            style={{ 
-              height: '45px', 
-              width: 'auto',
-              display: 'block'
-            }}
-            onError={(e) => { 
-              e.target.onerror = null; 
-              e.target.style.display = 'none';
-            }}
-          />
-          <span style={{ 
-            fontSize: '24px', 
-            fontWeight: '700', 
-            color: '#013463', 
-            letterSpacing: '1px',
-            display: 'block'
-          }}>NSDA</span>
-        </div>
-
-        <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button onClick={handleHomeClick} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Home</button>
-          <button onClick={() => navigateToHomeAndScroll('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'about' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</button>
-          <button onClick={() => navigateToHomeAndScroll('what-we-do')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'what-we-do' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</button>
-          <button onClick={() => navigateToHomeAndScroll('mentorship')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'mentorship' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Mentorship</button>
-          <button onClick={() => navigateToHomeAndScroll('projects')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'projects' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Projects</button>
-          <button onClick={() => navigateToHomeAndScroll('nujum')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'nujum' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Nujum</button>
-          <button onClick={() => navigateToHomeAndScroll('leadership')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: (active === 'leadership' && location.pathname === '/') ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Leadership</button>
-          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '8px 24px', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 'bold', textTransform: 'uppercase' }} onMouseEnter={(e) => e.target.style.opacity = '0.85'} onMouseLeave={(e) => e.target.style.opacity = '1'}>Register</Link>
-        </div>
-
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#013463' }} className="mobile-menu-btn">☰</button>
-      </div>
-
-      {isMenuOpen && (
-        <div style={{ padding: '16px 24px', borderTop: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '12px', backgroundColor: 'white' }}>
-          <button onClick={() => { handleHomeClick(); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>Home</button>
-          <button onClick={() => { navigateToHomeAndScroll('about'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>About</button>
-          <button onClick={() => { navigateToHomeAndScroll('what-we-do'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>What We Do</button>
-          <button onClick={() => { navigateToHomeAndScroll('mentorship'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>Mentorship</button>
-          <button onClick={() => { navigateToHomeAndScroll('projects'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>Projects</button>
-          <button onClick={() => { navigateToHomeAndScroll('nujum'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>Nujum</button>
-          <button onClick={() => { navigateToHomeAndScroll('leadership'); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: '#000000', fontWeight: '500', padding: '8px 0' }}>Leadership</button>
-          <Link to="/register" style={{ backgroundColor: '#DDA23A', color: '#013463', padding: '10px', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', fontWeight: 'bold' }} onClick={() => setIsMenuOpen(false)}>Register</Link>
-        </div>
-      )}
-    </nav>
-  );
-}
-
-// ========================================
-// HERO COMPONENT - using hero-image.jpg from public folder
+// HERO COMPONENT
 // ========================================
 function Hero() {
   return (
@@ -178,11 +26,7 @@ function Hero() {
         </div>
         <div className="lg:col-span-5 relative">
           <div className="aspect-square rounded-lg overflow-hidden shadow-2xl">
-            <img 
-              alt="Coding workspace" 
-              className="w-full h-full object-cover" 
-              src="/hero-image.jpg"
-            />
+            <img alt="Coding workspace" className="w-full h-full object-cover" src="/hero-image.jpg" />
           </div>
           <div className="absolute -bottom-4 -left-4 p-3 rounded-lg shadow-lg" style={{ backgroundColor: 'var(--gold)' }}>
             <span className="text-2xl font-extrabold block mb-0.5" style={{ color: 'var(--prussian-blue)' }}>2025</span>
@@ -195,7 +39,7 @@ function Hero() {
 }
 
 // ========================================
-// ABOUT COMPONENT - using Unsplash URL
+// ABOUT COMPONENT
 // ========================================
 function About() {
   return (
@@ -217,11 +61,7 @@ function About() {
           <div>
             <div className="relative">
               <div className="absolute inset-0 rounded-lg transform translate-x-4 translate-y-4" style={{ backgroundColor: 'rgba(221, 162, 58, 0.1)' }}></div>
-              <img 
-                alt="Team collaboration" 
-                className="rounded-lg shadow-xl relative z-10 w-full" 
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800"
-              />
+              <img alt="Team collaboration" className="rounded-lg shadow-xl relative z-10 w-full" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800"/>
             </div>
           </div>
         </div>
@@ -263,13 +103,13 @@ function WhatWeDo() {
 }
 
 // ========================================
-// MENTORSHIP COMPONENT
+// MENTORSHIP COMPONENT (Fixed: 15+ Countries → 15+ Universities)
 // ========================================
 function Mentorship() {
   const stats = [
     { value: "11", label: "Expert Mentors" },
     { value: "80", label: "Active Students" },
-    { value: "15+", label: "Countries" },
+    { value: "15+", label: "Universities" },
     { value: "24/7", label: "Community Support" }
   ];
 
@@ -466,89 +306,11 @@ function CTA() {
 }
 
 // ========================================
-// FOOTER COMPONENT
-// ========================================
-function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'What We Do', href: '#whatwedo' },
-    { name: 'Nujum', href: '#nujum' }
-  ];
-
-  const resourceLinks = [
-    { name: 'Projects', href: '#projects' },
-    { name: 'Leadership', href: '#leadership' },
-  ];
-
-  const socialLinks = [
-    { name: 'Telegram', href: 'https://t.me/nsda_community', icon: '💬', color: '#26A5E4' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/nsda', icon: '🔗', color: '#0077B5' },
-    { name: 'YouTube', href: 'https://youtube.com/@nsda', icon: '🎙️', color: '#FF0000' },
-  ];
-
-  return (
-    <footer style={{ backgroundColor: '#0a0f1a', color: 'rgba(255,255,255,0.9)', padding: '3rem 0 2rem 0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '2rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
-          <div style={{ flex: '1', minWidth: '180px' }}>
-            <h2 style={{ color: 'var(--gold)', marginBottom: '0.75rem', fontSize: '1.8rem' }}>NSDA</h2>
-            <p style={{ fontSize: '0.85rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)' }}>Empowering Muslim student developers to achieve technical excellence through faith-centered collaboration.</p>
-          </div>
-          <div style={{ flex: '0.5', minWidth: '100px' }}>
-            <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>NAVIGATION</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {navLinks.map((link) => (
-                <li key={link.name} style={{ marginBottom: '0.5rem' }}>
-                  <a href={link.href} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.85rem', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.target.style.color = 'var(--gold)'; e.target.style.paddingLeft = '5px'; }} onMouseLeave={(e) => { e.target.style.color = 'rgba(255,255,255,0.8)'; e.target.style.paddingLeft = '0'; }}>{link.name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ flex: '0.5', minWidth: '100px' }}>
-            <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>RESOURCES</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {resourceLinks.map((link) => (
-                <li key={link.name} style={{ marginBottom: '0.5rem' }}>
-                  <a href={link.href} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.85rem', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.target.style.color = 'var(--gold)'; e.target.style.paddingLeft = '5px'; }} onMouseLeave={(e) => { e.target.style.color = 'rgba(255,255,255,0.8)'; e.target.style.paddingLeft = '0'; }}>{link.name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ flex: '0.8', minWidth: '160px' }}>
-            <h4 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gold)' }}>CONNECT WITH US</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {socialLinks.map((link) => (
-                <li key={link.name} style={{ marginBottom: '0.75rem' }}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.85rem', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.target.style.color = link.color; e.target.style.transform = 'translateX(5px)'; }} onMouseLeave={(e) => { e.target.style.color = 'rgba(255,255,255,0.8)'; e.target.style.transform = 'translateX(0)'; }}><span style={{ fontSize: '1.1rem' }}>{link.icon}</span>{link.name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'nowrap', gap: '1rem', fontSize: '0.75rem' }}>
-          <p style={{ color: 'rgba(255,255,255,0.6)' }}>© {currentYear} Nejm Student Developers Association. All rights reserved.</p>
-          <div style={{ display: 'flex', gap: '1rem', color: 'rgba(255,255,255,0.5)' }}>
-            <span>🇪🇹</span>
-            <span>BUILT FOR THE UMMAH</span>
-            <span>🤲</span>
-            <span>ALHAMDULILLAH</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-// ========================================
-// HOME PAGE (MAIN EXPORT)
+// HOME PAGE (MAIN EXPORT) 
 // ========================================
 export default function Home() {
   return (
     <main className="overflow-x-hidden">
-      <Navbar />
       <div style={{ paddingTop: '70px' }}>
         <Hero />
       </div>
@@ -559,7 +321,6 @@ export default function Home() {
       <div id="nujum"><Nujum /></div>
       <div id="leadership"><Leadership /></div>
       <CTA />
-      <Footer />
     </main>
   );
 }
