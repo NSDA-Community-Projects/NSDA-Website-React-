@@ -8,8 +8,8 @@ export default function Footer() {
     { name: 'About', href: '#about' },
     { name: 'What We Do', href: '#whatwedo' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Nujum', href: '#nujum' },
-    { name: 'Leadership', href: '#leadership' }
+    { name: 'Nujum', href: '/#nujum' },
+    { name: 'Leadership', href: '/#leadership' }
   ];
 
   const socialLinks = [
