@@ -1,12 +1,6 @@
 import React from 'react';
 
-export default function Projects() {
-  const projects = [
-    { tech: "Python / Telegram", title: "Nejm Ask Bot", description: "A sophisticated knowledge-base bot for student inquiries and community management.", icon: "fab fa-telegram" },
-    { tech: "Node.js", title: "Prayer Times API", description: "High-performance microservice providing accurate calculation methods globally.", icon: "fas fa-cloud-moon" },
-    { tech: "React", title: "Quran Study App", description: "Cross-platform application for structured study and tafsir tracking.", icon: "fas fa-book-quran" }
-  ];
-
+function Projects() {
   return (
     <>
       {/* Top Navigation Bar */}
@@ -57,278 +51,113 @@ export default function Projects() {
         </div>
       </header>
 
-      {/* Main Content Canvas */}
+      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-8 pb-32">
-        {/* Featured Projects Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
           
-          {/* Project 1: Nejm Ask Bot (Large) */}
-          <div className="md:col-span-8 group relative bg-surface-container-lowest rounded-lg p-8 overflow-hidden shadow-[0_12px_40px_rgba(1,52,99,0.06)] hover:-translate-y-1 transition-all duration-300">
+          {/* Project 1: Daily Quran Automation Bot */}
+          <div className="md:col-span-8 group relative bg-white rounded-lg p-8 overflow-hidden shadow-[0_12px_40px_rgba(1,52,99,0.06)] hover:-translate-y-1 transition-all duration-300">
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className="px-2 py-0.5 rounded bg-primary-container/10 text-primary-container text-[10px] font-bold uppercase tracking-wider">
-                      Python
-                    </span>
-                    <span className="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary text-[10px] font-bold uppercase tracking-wider">
-                      Telegram
-                    </span>
+                    <span className="px-2 py-0.5 rounded bg-[#013463]/10 text-[#013463] text-[10px] font-bold uppercase tracking-wider">Python</span>
+                    <span className="px-2 py-0.5 rounded bg-[#fdbe54]/20 text-[#7f5600] text-[10px] font-bold uppercase tracking-wider">Telegram API</span>
+                    <span className="px-2 py-0.5 rounded bg-green-100 text-green-800 text-[10px] font-bold uppercase tracking-wider">Quran API</span>
                   </div>
-                  <h3 className="font-headline text-3xl font-bold text-primary">Nejm Ask Bot</h3>
+                  <h3 className="font-headline text-3xl font-bold text-[#001f3f]">Daily Quran Automation Bot</h3>
                 </div>
-                <div className="flex space-x-4 text-on-surface-variant/60">
-                  <div className="flex items-center text-sm">
-                    <span className="material-symbols-outlined text-base mr-1">star</span> 124
-                  </div>
-                  <div className="flex items-center text-sm">
-                    <span className="material-symbols-outlined text-base mr-1">fork_right</span> 42
-                  </div>
+                <div className="flex space-x-4 text-[#43474f]/60">
+                  <div className="flex items-center text-sm"><span className="material-symbols-outlined text-base mr-1">star</span> 156</div>
+                  <div className="flex items-center text-sm"><span className="material-symbols-outlined text-base mr-1">fork_right</span> 53</div>
                 </div>
               </div>
-              
-              <p className="text-on-surface-variant mb-8 max-w-md">
-                Automating community inquiries through a robust Python-based Telegram bot. Designed for high-concurrency and seamless user interaction.
+              <p className="text-[#43474f] mb-8 max-w-md">
+                Automated daily Quran verses and tafsir delivery via Telegram. Features personalized schedules, Arabic recitation, and translation support.
               </p>
-              
               <div className="mt-auto flex items-center justify-between">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high overflow-hidden" title="Contributor">
-                    <div className="w-full h-full bg-gradient-to-br from-[#3a6091] to-[#1f4878]"></div>
-                  </div>
-                  <div className="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high overflow-hidden" title="Contributor">
-                    <div className="w-full h-full bg-gradient-to-br from-[#fdbe54] to-[#7f5600]"></div>
-                  </div>
-                  <div className="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-on-surface-variant">
-                    +8
-                  </div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#e7e7f3] overflow-hidden"><div className="w-full h-full bg-gradient-to-br from-[#3a6091] to-[#1f4878]"></div></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#e7e7f3] overflow-hidden"><div className="w-full h-full bg-gradient-to-br from-[#fdbe54] to-[#7f5600]"></div></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#e7e7f3] flex items-center justify-center text-[10px] font-bold text-[#43474f]">+12</div>
                 </div>
-                <a className="flex items-center font-bold text-primary hover:text-secondary transition-colors" href="#">
-                  View Repository <span className="material-symbols-outlined ml-2">arrow_outward</span>
-                </a>
+                <a className="flex items-center font-bold text-[#001f3f] hover:text-[#7f5600] transition-colors" href="#">View Repository <span className="material-symbols-outlined ml-2">arrow_outward</span></a>
               </div>
             </div>
-            
-            {/* Code Snippet Motif Overlay */}
             <div className="absolute -right-12 bottom-1/4 opacity-5 rotate-12 pointer-events-none">
-              <pre className="text-xs font-mono"><code>{`async def handle_inquiry(update, context):
-    query = update.message.text
-    response = await ai_engine.analyze(query)
-    await context.bot.send_message(...)`}</code></pre>
+              <pre className="text-xs font-mono"><code>{`async def send_daily_verse(chat_id):
+    verse = await get_random_verse()
+    translation = await get_translation(verse)
+    await bot.send_message(chat_id, f"{verse}\\n\\n{translation}")`}</code></pre>
             </div>
           </div>
 
-          {/* Project 2: Prayer Times API (Small/Vertical) */}
-          <div className="md:col-span-4 bg-primary-container rounded-lg p-8 flex flex-col justify-between text-white shadow-[0_12px_40px_rgba(1,52,99,0.06)] hover:-translate-y-1 transition-all duration-300">
+          {/* Project 2: Prayer Times API */}
+          <div className="md:col-span-4 bg-[#013463] rounded-lg p-8 flex flex-col justify-between text-white shadow-[0_12px_40px_rgba(1,52,99,0.06)] hover:-translate-y-1 transition-all duration-300">
             <div>
-              <div className="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-primary text-2xl">schedule</span>
-              </div>
+              <div className="w-12 h-12 bg-[#fdbe54] rounded-lg flex items-center justify-center mb-6"><span className="material-symbols-outlined text-[#001f3f] text-2xl">schedule</span></div>
               <h3 className="font-headline text-2xl font-bold text-white mb-4">Prayer Times API</h3>
-              <p className="text-white/80 text-sm leading-relaxed mb-6">
-                Node.js / Express microservice providing precision calculations for global regions using localized astronomical data.
-              </p>
+              <p className="text-white/80 text-sm leading-relaxed mb-6">Node.js / Express microservice providing precision calculations for global regions using localized astronomical data.</p>
             </div>
             <div>
-              <div className="flex items-center space-x-2 text-xs font-mono opacity-60 mb-4">
-                <span>GET</span>
-                <span>/v1/timings/:city</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-secondary-container font-bold text-xs uppercase tracking-widest">Active Beta</span>
-                <span className="material-symbols-outlined text-secondary-container">api</span>
-              </div>
+              <div className="flex items-center space-x-2 text-xs font-mono opacity-60 mb-4"><span>GET</span><span>/v1/timings/:city</span></div>
+              <div className="flex justify-between items-center"><span className="text-[#fdbe54] font-bold text-xs uppercase tracking-widest">Active Beta</span><span className="material-symbols-outlined text-[#fdbe54]">api</span></div>
             </div>
           </div>
 
-          {/* Project 3: Quran Study App (Horizontal) */}
-          <div className="md:col-span-12 group bg-surface-container-high rounded-lg p-1 w-full shadow-inner">
-            <div className="bg-surface-container-lowest rounded-[1.75rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+          {/* Project 3: Quran Study App */}
+          <div className="md:col-span-12 group bg-[#e7e7f3] rounded-lg p-1 w-full shadow-inner">
+            <div className="bg-white rounded-[1.75rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1">
-                <div className="inline-block px-3 py-1 rounded-full bg-green-100 text-green-800 text-[10px] font-bold uppercase tracking-wider mb-6">
-                  Production Ready
-                </div>
-                <h3 className="font-headline text-4xl font-bold text-primary mb-6">Quran Study App</h3>
-                <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-                  A React and Firebase powered platform for tracking tafsir progress. Features real-time sync across devices and a distraction-free interface designed for deep contemplation.
-                </p>
+                <div className="inline-block px-3 py-1 rounded-full bg-green-100 text-green-800 text-[10px] font-bold uppercase tracking-wider mb-6">Production Ready</div>
+                <h3 className="font-headline text-4xl font-bold text-[#001f3f] mb-6">Quran Study App</h3>
+                <p className="text-[#43474f] text-lg leading-relaxed mb-8">A React and Firebase powered platform for tracking tafsir progress. Features real-time sync across devices.</p>
                 <div className="flex flex-wrap gap-3 mb-8">
-                  <span className="px-4 py-2 bg-surface-container-low border border-outline-variant/30 rounded-xl text-xs font-medium text-primary">
-                    React 18
-                  </span>
-                  <span className="px-4 py-2 bg-surface-container-low border border-outline-variant/30 rounded-xl text-xs font-medium text-primary">
-                    Firebase Auth
-                  </span>
-                  <span className="px-4 py-2 bg-surface-container-low border border-outline-variant/30 rounded-xl text-xs font-medium text-primary">
-                    Tailwind CSS
-                  </span>
-                  <span className="px-4 py-2 bg-surface-container-low border border-outline-variant/30 rounded-xl text-xs font-medium text-primary">
-                    Firestore
-                  </span>
+                  <span className="px-4 py-2 bg-[#f3f3ff] border border-[#c3c6d0]/30 rounded-xl text-xs font-medium text-[#001f3f]">React 18</span>
+                  <span className="px-4 py-2 bg-[#f3f3ff] border border-[#c3c6d0]/30 rounded-xl text-xs font-medium text-[#001f3f]">Firebase Auth</span>
+                  <span className="px-4 py-2 bg-[#f3f3ff] border border-[#c3c6d0]/30 rounded-xl text-xs font-medium text-[#001f3f]">Tailwind CSS</span>
+                  <span className="px-4 py-2 bg-[#f3f3ff] border border-[#c3c6d0]/30 rounded-xl text-xs font-medium text-[#001f3f]">Firestore</span>
                 </div>
-                <button className="px-8 py-4 bg-primary text-white rounded-xl font-bold flex items-center hover:bg-primary/90 transition-colors">
-                  Launch Project <span className="material-symbols-outlined ml-2">rocket_launch</span>
-                </button>
+                <button className="px-8 py-4 bg-[#001f3f] text-white rounded-xl font-bold flex items-center hover:bg-[#001f3f]/90 transition-colors">Launch Project <span className="material-symbols-outlined ml-2">rocket_launch</span></button>
               </div>
-            <div className="flex-1 relative">
-  <div className="relative rounded-lg overflow-hidden border-4 border-surface shadow-2xl bg-white">
-    {/* Mock Mobile Device Frame */}
-    <div className="bg-gray-50 rounded-lg overflow-hidden">
-      
-      {/* Mock Status Bar */}
-      <div className="bg-primary px-4 py-2 flex justify-between items-center">
-        <span className="text-white text-[10px] font-medium">9:41</span>
-        <div className="flex gap-1">
-          <span className="text-white text-[10px]">📶</span>
-          <span className="text-white text-[10px]">🔋</span>
-        </div>
-      </div>
-      
-      {/* Mock App Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-container px-4 py-3">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-secondary-container rounded-full flex items-center justify-center">
-            <span className="text-primary text-sm font-bold">Q</span>
-          </div>
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--prussian-blue)' }}>Open Source Ecosystem</h2>
-            <p className="text-gray-500 max-w-xl">We build tools that solve problems within the community while following modern engineering best practices.</p>
-          </div>
-          <a 
-            href="https://github.com/NSDA-Community-Projects" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wide transition-all"
-            style={{ backgroundColor: 'var(--prussian-blue)', color: 'white', borderRadius: '9999px', textDecoration: 'none' }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--gold)'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--prussian-blue)'}
-          >
-            <i className="fab fa-github"></i> Explore All Repo →
-          </a>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <React.Fragment key={index}>
-              <div className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-gold transition-all p-6 shadow-lg">
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(1, 52, 99, 0.1)', color: 'var(--prussian-blue)' }}>{project.tech}</span>
-                  <i className={`${project.icon} text-2xl`} style={{ color: 'var(--gold)' }}></i>
+              <div className="flex-1 relative">
+                <div className="relative rounded-lg overflow-hidden border-4 border-white shadow-2xl bg-white">
+                  <div className="bg-gradient-to-br from-[#001f3f] to-[#013463] p-6">
+                    <div className="flex justify-center mb-4"><div className="w-16 h-16 bg-[#fdbe54] rounded-2xl flex items-center justify-center shadow-lg"><span className="material-symbols-outlined text-3xl text-[#001f3f]">menu_book</span></div></div>
+                    <h3 className="text-white text-center text-xl font-bold mb-1">Quran Study</h3>
+                    <p className="text-white/80 text-center text-xs mb-6">Deepen Your Understanding</p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 bg-white/10 rounded-lg p-2"><span className="material-symbols-outlined text-[#fdbe54] text-sm">check_circle</span><span className="text-white text-xs">Track Tafsir Progress</span></div>
+                      <div className="flex items-center gap-3 bg-white/10 rounded-lg p-2"><span className="material-symbols-outlined text-[#fdbe54] text-sm">sync</span><span className="text-white text-xs">Real-time Sync</span></div>
+                      <div className="flex items-center gap-3 bg-white/10 rounded-lg p-2"><span className="material-symbols-outlined text-[#fdbe54] text-sm">translate</span><span className="text-white text-xs">Multiple Translations</span></div>
+                    </div>
+                    <div className="mt-6"><div className="flex justify-between text-white/80 text-xs mb-1"><span>Overall Progress</span><span>65%</span></div><div className="w-full bg-white/20 rounded-full h-2"><div className="bg-[#fdbe54] rounded-full h-2" style={{ width: '65%' }}></div></div></div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--prussian-blue)' }}>{project.title}</h3>
-                <p className="text-gray-500 leading-relaxed">{project.description}</p>
-                {/* CONTRIBUTORS SECTION REMOVED - as requested */}
+                <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-[#fdbe54]/20 rounded-lg"></div>
               </div>
-              <span className="text-secondary-container text-xs">📖</span>
-            </React.Fragment>
-          ))}</div>
-          <div className="text-right">
-            <p className="text-primary text-sm font-arabic leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-          </div>
-        </div>
-        
-        {/* Progress Section */}
-        <div className="mb-3">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-primary text-xs font-semibold">Tafsir Progress</span>
-            <span className="text-secondary text-xs font-bold">65%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-secondary-container rounded-full h-2" style={{ width: '65%' }}></div>
-          </div>
-        </div>
-        
-        {/* Stats Grid */}
-        <div className="grid grid-cols-3 gap-2 mt-4">
-          <div className="text-center bg-surface-container-low rounded-lg p-2">
-            <span className="text-secondary-container text-base">📚</span>
-            <p className="text-primary text-xs font-bold">12</p>
-            <p className="text-on-surface-variant text-[10px]">Surahs</p>
-          </div>
-          <div className="text-center bg-surface-container-low rounded-lg p-2">
-            <span className="text-secondary-container text-base">⭐</span>
-            <p className="text-primary text-xs font-bold">85%</p>
-            <p className="text-on-surface-variant text-[10px]">Complete</p>
-          </div>
-          <div className="text-center bg-surface-container-low rounded-lg p-2">
-            <span className="text-secondary-container text-base">🔥</span>
-            <p className="text-primary text-xs font-bold">7</p>
-            <p className="text-on-surface-variant text-[10px]">Day Streak</p>
-          </div>
-        </div>
-        
-        {/* Recent Activity */}
-        <div className="mt-3 pt-2 border-t border-outline-variant/20">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-secondary-container rounded-full"></div>
-            <span className="text-primary text-[10px] font-medium">Last studied: Surah Al-Ikhlas</span>
-          </div>
-        </div>
-      </div>
-      
-      {/* Mock Bottom Navigation */}
-      <div className="border-t border-outline-variant/20 bg-white px-4 py-2 flex justify-around">
-        <span className="text-secondary-container text-sm">📖</span>
-        <span className="text-on-surface-variant/40 text-sm">🔍</span>
-        <span className="text-on-surface-variant/40 text-sm">📊</span>
-        <span className="text-on-surface-variant/40 text-sm">👤</span>
-      </div>
-    </div>
-  </div>
-  <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-secondary-container/20 rounded-lg"></div>
-</div>
             </div>
           </div>
         </div>
 
         {/* Contributor Section */}
-        <section className="relative rounded-lg bg-primary p-12 md:p-20 overflow-hidden text-center md:text-left">
+        <section className="relative rounded-lg bg-[#001f3f] p-12 md:p-20 overflow-hidden text-center md:text-left">
           <div className="muqarnas-watermark -bottom-40 -left-40 opacity-10"></div>
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div>
               <h2 className="font-headline text-4xl font-bold text-white mb-6">Join the Digital Jihad</h2>
-              <p className="text-white/80 text-lg leading-relaxed mb-8">
-                Our repositories are open for contributions. Whether you're a designer, developer, or documentation wizard, there's a place for you in our ecosystem.
-              </p>
+              <p className="text-white/80 text-lg leading-relaxed mb-8">Our repositories are open for contributions. Whether you're a designer, developer, or documentation wizard, there's a place for you in our ecosystem.</p>
               <div className="space-y-4 mb-10">
-                <div className="flex items-center space-x-3">
-                  <span className="material-symbols-outlined text-secondary-container">check_circle</span>
-                  <span className="text-white">Access to private mentorship channels</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="material-symbols-outlined text-secondary-container">check_circle</span>
-                  <span className="text-white">Recognition in our global contributor list</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="material-symbols-outlined text-secondary-container">check_circle</span>
-                  <span className="text-white">Hands-on experience with production-grade stacks</span>
-                </div>
+                <div className="flex items-center space-x-3"><span className="material-symbols-outlined text-[#fdbe54]">check_circle</span><span className="text-white">Access to private mentorship channels</span></div>
+                <div className="flex items-center space-x-3"><span className="material-symbols-outlined text-[#fdbe54]">check_circle</span><span className="text-white">Recognition in our global contributor list</span></div>
+                <div className="flex items-center space-x-3"><span className="material-symbols-outlined text-[#fdbe54]">check_circle</span><span className="text-white">Hands-on experience with production-grade stacks</span></div>
               </div>
-              <button className="w-full md:w-auto px-10 py-5 bg-secondary-container text-primary font-extrabold rounded-xl hover:scale-95 transition-transform">
-                Explore GitHub Repositories
-              </button>
+              <button className="w-full md:w-auto px-10 py-5 bg-[#fdbe54] text-[#001f3f] font-extrabold rounded-xl hover:scale-95 transition-transform">Explore GitHub Repositories</button>
             </div>
-            
             <div className="hidden md:block">
               <div className="bg-white/10 backdrop-blur-md rounded-lg p-8 border border-white/10">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center space-x-3">
-                    <span className="material-symbols-outlined text-white">account_tree</span>
-                    <span className="text-white font-mono text-sm tracking-tighter">CONTRIBUTING.md</span>
-                  </div>
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-error/40"></div>
-                    <div className="w-3 h-3 rounded-full bg-secondary-container/40"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400/40"></div>
-                  </div>
-                </div>
-                <div className="space-y-4 font-mono text-xs text-white/70">
-                  <p className="text-secondary-container"># How to Join</p>
-                  <p>1. Fork the target repository</p>
-                  <p>2. Create a new branch: `feat/amazing-thing`</p>
-                  <p>3. Commit your changes with meaningful messages</p>
-                  <p>4. Push to the branch and open a Pull Request</p>
-                  <p className="pt-4 border-t border-white/5 italic">// We value clean code and clear comments.</p>
-                </div>
+                <div className="flex items-center justify-between mb-8"><div className="flex items-center space-x-3"><span className="material-symbols-outlined text-white">account_tree</span><span className="text-white font-mono text-sm tracking-tighter">CONTRIBUTING.md</span></div><div className="flex space-x-2"><div className="w-3 h-3 rounded-full bg-red-500/40"></div><div className="w-3 h-3 rounded-full bg-[#fdbe54]/40"></div><div className="w-3 h-3 rounded-full bg-green-400/40"></div></div></div>
+                <div className="space-y-4 font-mono text-xs text-white/70"><p className="text-[#fdbe54]"># How to Join</p><p>1. Fork the target repository</p><p>2. Create a new branch: `feat/amazing-thing`</p><p>3. Commit your changes with meaningful messages</p><p>4. Push to the branch and open a Pull Request</p><p className="pt-4 border-t border-white/5 italic">// We value clean code and clear comments.</p></div>
               </div>
             </div>
           </div>
@@ -336,23 +165,20 @@ export default function Projects() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-primary w-full py-12 px-8 border-t border-primary-container">
+      <footer className="bg-[#001f3f] w-full py-12 px-8 border-t border-[#013463]">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto space-y-4 md:space-y-0">
-          <div className="text-lg font-['Space_Grotesk'] text-secondary-container">NSDA</div>
-          <div className="flex flex-wrap justify-center gap-8 font-['Helvetica_Neue'] text-xs uppercase tracking-widest">
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Terms of Service</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">Contact Us</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">GitHub</a>
-            <a href="#" className="text-white/60 hover:text-secondary-container transition-colors">LinkedIn</a>
+          <div className="text-lg font-['Space_Grotesk'] text-[#fdbe54]">NSDA</div>
+          <div className="flex flex-wrap justify-center gap-8 text-xs uppercase tracking-widest">
+            <a href="#" className="text-white/60 hover:text-[#fdbe54] transition-colors">Privacy Policy</a>
+            <a href="#" className="text-white/60 hover:text-[#fdbe54] transition-colors">Terms of Service</a>
+            <a href="#" className="text-white/60 hover:text-[#fdbe54] transition-colors">Contact Us</a>
+            <a href="#" className="text-white/60 hover:text-[#fdbe54] transition-colors">GitHub</a>
+            <a href="#" className="text-white/60 hover:text-[#fdbe54] transition-colors">LinkedIn</a>
           </div>
-          <div className="font-['Helvetica_Neue'] text-xs uppercase tracking-widest text-white/60">
-            © 2024 Nejm Student Developers Association. Built for the Digital Sanctuary.
-          </div>
+          <div className="text-xs uppercase tracking-widest text-white/60">© 2024 Nejm Student Developers Association. Built for the Digital Sanctuary.</div>
         </div>
       </footer>
 
-      {/* Add the watermark styles */}
       <style>{`
         .muqarnas-watermark {
           position: absolute;
