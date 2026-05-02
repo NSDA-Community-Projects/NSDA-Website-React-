@@ -208,17 +208,19 @@ export default function Projects() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-gold transition-all p-6 shadow-lg">
-              <div className="flex justify-between items-start mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(1, 52, 99, 0.1)', color: 'var(--prussian-blue)' }}>{project.tech}</span>
-                <i className={`${project.icon} text-2xl`} style={{ color: 'var(--gold)' }}></i>
+            <React.Fragment key={index}>
+              <div className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-gold transition-all p-6 shadow-lg">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(1, 52, 99, 0.1)', color: 'var(--prussian-blue)' }}>{project.tech}</span>
+                  <i className={`${project.icon} text-2xl`} style={{ color: 'var(--gold)' }}></i>
+                </div>
+                <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--prussian-blue)' }}>{project.title}</h3>
+                <p className="text-gray-500 leading-relaxed">{project.description}</p>
+                {/* CONTRIBUTORS SECTION REMOVED - as requested */}
               </div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--prussian-blue)' }}>{project.title}</h3>
-              <p className="text-gray-500 leading-relaxed">{project.description}</p>
-              {/* CONTRIBUTORS SECTION REMOVED - as requested */}
-            </div>
-            <span className="text-secondary-container text-xs">📖</span>
-          </div>
+              <span className="text-secondary-container text-xs">📖</span>
+            </React.Fragment>
+          ))}</div>
           <div className="text-right">
             <p className="text-primary text-sm font-arabic leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           </div>
