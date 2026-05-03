@@ -293,10 +293,7 @@ function Leadership() {
         <div className="text-center my-6">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-2 rounded-full font-semibold transition-all duration-300"
-            style={{ backgroundColor: '#013463', color: 'white', border: 'none', cursor: 'pointer' }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#DDA23A'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#013463'}
+            className="px-6 py-2 rounded-full font-semibold transition-all duration-300 bg-[#013463] text-white hover:bg-[#DDA23A]"
           >
             {showAll ? 'Show Less ▲' : 'Show More ▼'}
           </button>
