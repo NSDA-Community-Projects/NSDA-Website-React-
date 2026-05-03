@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 
 // Move sections OUTSIDE component
 const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
@@ -235,13 +235,19 @@ function Nujum() {
 // LEADERSHIP COMPONENT
 // ========================================
 function Leadership() {
-  const foundingTeam = [
+  const [showAll, setShowAll] = useState(false);
+
+  const mainLeaders = [
     { name: "Osama Seid", role: "President", university: "Jimma University", icon: "fa-user-tie", gender: "male", linkedin: "https://www.linkedin.com/in/osama-seid-a2978129a" },
     { name: "Nebiyou Elias (Nebil)", role: "Vice President", university: "AASTU", icon: "fa-user", gender: "male", linkedin: "https://www.linkedin.com/in/nebiyou-elias-mohammed/" },
     { name: "Abdelaziz Ebrahim", role: "Content Head", university: "Bahir Dar University", icon: "fa-newspaper", gender: "male", linkedin: "https://www.linkedin.com/in/abdelazizEbrahim/" },
     { name: "Sumeya Muhammed", role: "Sisters Communication Head", university: "Jimma University", icon: "fa-comments", gender: "female", linkedin: "http://linkedin.com/in/sumeya-muhammed-a83168319/" },
-    { name: "Semeriya Seid", role: "Sisters Production Head", university: "Haramaya University", icon: "fa-video", gender: "female", linkedin: "https://www.linkedin.com/in/sud-seid-b24b48356/" },
     { name: "Sumeya Awel", role: "Sisters President", university: "ASTU", icon: "fa-crown", gender: "female", linkedin: "#" },
+    { name: "Miftah Fentaw", role: "Communication Head", university: "Haramaya University", icon: "fa-bullhorn", gender: "male", linkedin: "https://www.linkedin.com/in/miftah-fentaw/" },
+  ];
+
+  const moreLeaders = [
+    { name: "Semeriya Seid", role: "Sisters Production Head", university: "Haramaya University", icon: "fa-video", gender: "female", linkedin: "https://www.linkedin.com/in/sud-seid-b24b48356/" },
     { name: "Fozia Mohammed", role: "Sisters Project Head", university: "Addis Ababa University", icon: "fa-tasks", gender: "female", linkedin: "https://www.linkedin.com/in/fozia-mohammed-50132730b/" },
     { name: "Hanan Nasir", role: "Sisters Content Head", university: "Arba Minch University", icon: "fa-pen-fancy", gender: "female", linkedin: "https://www.linkedin.com/in/hanan-nasir2014" },
     { name: "Muaz Sani", role: "Production Head", university: "Jimma University", icon: "fa-video", gender: "male", linkedin: "#" },
@@ -250,7 +256,6 @@ function Leadership() {
     { name: "Abdulaziz Ayalew", role: "Content Head", university: "AASTU", icon: "fa-newspaper", gender: "male", linkedin: "https://www.linkedin.com/in/abdulaziz-ayalew" },
     { name: "Sitra Seyfu", role: "Sisters Production Head", university: "Jimma University", icon: "fa-video", gender: "female", linkedin: "#" },
     { name: "Imadudin Keremu", role: "Project Manager", university: "Haramaya University", icon: "fa-tasks", gender: "male", linkedin: "#" },
-    { name: "Miftah Fentaw", role: "Communication Head", university: "Haramaya University", icon: "fa-bullhorn", gender: "male", linkedin: "https://www.linkedin.com/in/miftah-fentaw/" },
   ];
 
   const getIconColor = (gender) => {
@@ -267,8 +272,9 @@ function Leadership() {
           <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#DDA23A' }}></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6">
-          {foundingTeam.map((member, index) => (
+        {/* Main Leaders - Always Visible */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5 md:gap-6 mb-8">
+          {mainLeaders.map((member, index) => (
             <a key={index} href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group text-center block transition-all duration-300 hover:-translate-y-2" style={{ textDecoration: 'none' }}>
               <div className="relative inline-block mb-3">
                 <div className="absolute inset-0 rounded-full transform scale-0 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#DDA23A' }}></div>
@@ -282,6 +288,38 @@ function Leadership() {
             </a>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        <div className="text-center my-6">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-2 rounded-full font-semibold transition-all duration-300"
+            style={{ backgroundColor: '#013463', color: 'white', border: 'none', cursor: 'pointer' }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#DDA23A'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#013463'}
+          >
+            {showAll ? 'Show Less ▲' : 'Show More ▼'}
+          </button>
+        </div>
+
+        {/* More Leaders - Only Visible when showAll is true */}
+        {showAll && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6 mt-6 pt-6 border-t border-gray-200">
+            {moreLeaders.map((member, index) => (
+              <a key={index} href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group text-center block transition-all duration-300 hover:-translate-y-2" style={{ textDecoration: 'none' }}>
+                <div className="relative inline-block mb-3">
+                  <div className="absolute inset-0 rounded-full transform scale-0 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#DDA23A' }}></div>
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center text-xl relative z-10 mx-auto" style={{ backgroundColor: 'rgba(1, 52, 99, 0.1)', color: getIconColor(member.gender) }}>
+                    <i className={`fas ${member.icon}`}></i>
+                  </div>
+                </div>
+                <h5 className="font-bold text-xs" style={{ color: '#013463' }}>{member.name}</h5>
+                <p className="text-[10px] font-semibold mt-1" style={{ color: '#DDA23A' }}>{member.role}</p>
+                <p className="text-[10px] text-gray-500 mt-1">{member.university}</p>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
