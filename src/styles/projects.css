@@ -6,7 +6,7 @@
 
 /* Hero Section */
 .hero {
-  padding: 90px 60px 60px;
+  padding: 80px 60px 60px;
 }
 
 .tag {
@@ -69,7 +69,7 @@
   color: #555;
   margin-bottom: 15px;
 }
-
+background
 /* Featured Section */
 .featured-wide {
   margin: 60px;
@@ -116,13 +116,17 @@
 /* Watermark style */
 .muqarnas-watermark {
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L61.23 38.77L100 50L61.23 61.23L50 100L38.77 61.23L0 50L38.77 38.77Z' fill='%23013463' fill-opacity='0.03'/%3E%3C/svg%3E");
+  width: 950px;
+  height: 950px;
+  /* እዚህ ጋር fill-opacity='1' (100% ጥቁር) አድርጌዋለሁ */
+ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L61.23 38.77L100 50L61.23 61.23L50 100L38.77 61.23L0 50L38.77 38.77Z' fill='%23000000' fill-opacity='1'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 0;
+  /* አሁን እዚህ ጋር በምትፈልጊው መጠን ቁጥሩን ከፍ በማድረግ ጨልሞ እንዲታይ ማድረግ ትችያለሽ */
+  /* 0.3 በጣም ጎላ ያለ ነው፣ 0.5 ደግሞ በጣም ጥቁር ነው */
+  opacity: 0.5; 
 }
 
 /* Responsive */

@@ -27,7 +27,8 @@ function Hero() {
             >
               Register
             </Link>
-        </div>
+          </div>
+          </div>
         <div className="lg:col-span-5 relative">
           <div className="aspect-square rounded-lg overflow-hidden shadow-2xl">
             <img alt="Coding workspace" className="w-full h-full object-cover" src="/hero-image.jpg" />
