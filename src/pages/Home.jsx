@@ -1,5 +1,5 @@
-import React,{ useState } from 'react';
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // Move sections OUTSIDE component
 const sections = ['about', 'what-we-do', 'mentorship', 'projects', 'nujum', 'leadership'];
 
@@ -21,8 +21,12 @@ function Hero() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="https://t.me/nsda_community" target="_blank" rel="noopener noreferrer" className="px-8 py-3 font-bold uppercase tracking-wider transition-all" style={{ backgroundColor: 'var(--prussian-blue)', color: 'white', borderRadius: '9999px', textDecoration: 'none', display: 'inline-block' }} onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--gold)'} onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--prussian-blue)'}>Join NSDA</a>
-            <a href="/register" className="px-8 py-3 font-bold uppercase tracking-wider transition-all" style={{ backgroundColor: 'white', color: 'var(--prussian-blue)', border: '1px solid var(--gold)', borderRadius: '9999px', textDecoration: 'none', display: 'inline-block' }} onMouseEnter={(e) => { e.target.style.backgroundColor = 'var(--gold)'; e.target.style.color = 'white'; }} onMouseLeave={(e) => { e.target.style.backgroundColor = 'white'; e.target.style.color = 'var(--prussian-blue)'; }}>Register</a>
-          </div>
+            <Link 
+              to="/register" 
+              className="px-8 py-3 font-bold uppercase tracking-wider transition-all rounded-full border border-[var(--gold)] bg-white text-[var(--prussian-blue)] hover:bg-[var(--gold)] hover:text-white inline-block no-underline"
+            >
+              Register
+            </Link>
         </div>
         <div className="lg:col-span-5 relative">
           <div className="aspect-square rounded-lg overflow-hidden shadow-2xl">
@@ -103,7 +107,7 @@ function WhatWeDo() {
 }
 
 // ========================================
-// MENTORSHIP COMPONENT (Fixed: 15+ Countries → 15+ Universities)
+// MENTORSHIP COMPONENT
 // ========================================
 function Mentorship() {
   const stats = [
