@@ -37,7 +37,7 @@ const featuredVideoId = getVideoId(latestEpisode?.videoUrl);
     <SectionWrapper id="nujum" className="relative overflow-hidden bg-surface">
         
         {/* HERO SECTION */}
-        <div className="relative pt-16 pb-12">
+        <div className="relative pt-32 pb-24">
           
            <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-6">
              <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -251,7 +251,7 @@ const featuredVideoId = getVideoId(latestEpisode?.videoUrl);
 <div className="mt-20 max-w-8xl mx-auto px-6 pb-20">
  
 
-  <div className="bg-primary rounded-[2.5rem] py-12 px-16 text-surface max-w-6xl mx-auto overflow-hidden relative">
+  <div className="bg-primary rounded-[2.5rem] py-20 px-16 text-surface max-w-6xl mx-auto overflow-hidden relative">
     
     <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
      
@@ -272,7 +272,7 @@ const featuredVideoId = getVideoId(latestEpisode?.videoUrl);
       {/* RIGHT TELEGRAM BOX */}
       <div className="w-full lg:max-w-md">
 
-        <div className="flex bg-surface/10 p-2 rounded-xl border border-surface/20 backdrop-blur-sm">
+       <div className="flex items-center justify-between bg-surface/10 p-2 rounded-xl border border-surface/20 backdrop-blur-sm">
           
           <input
             type="text"
@@ -281,18 +281,17 @@ const featuredVideoId = getVideoId(latestEpisode?.videoUrl);
           />
 
           {/* Telegram button */}
+         {/* Updated Join Us button */}
           <a
             href="https://t.me/nsda_community"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-secondary text-primary px-6 py-3 rounded-lg font-headline font-bold text-xs hover:opacity-90 transition-all active:scale-95 flex items-center gap-2"
+            className="bg-secondary text-primary px-8 py-3 rounded-lg font-headline font-bold text-sm hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 shadow-lg"
           >
-           
-
             <span className="material-symbols-outlined text-sm">
               send
             </span>
-            Telegram
+            Join Us
           </a>
         </div>
 
