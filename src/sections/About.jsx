@@ -63,7 +63,7 @@ export default function About() {
           </div>
 
           <div className="group bg-[#0b2545] text-white p-8 rounded-3xl shadow-md hover:shadow-xl transition hover:-translate-y-2">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-yellow-40 mb-4">
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 mb-4">
               <FaEye className="text-[#DDA23A]  " />
             </div>
             <h3 className="text-lg text-white-200 font-semibold mb-2">
