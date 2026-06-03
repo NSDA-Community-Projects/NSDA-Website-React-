@@ -62,7 +62,7 @@ export default function Navbar() {
     if (location.pathname === '/about') return 'about';
     if (location.pathname === '/what-we-do') return 'what-we-do';
     if (location.pathname === '/nujum') return 'nujum';
-    if (location.pathname === '/leadership') return 'leadership';
+    if (location.pathname.startsWith('/leadership')) return 'leadership';
     if (location.pathname === '/') {
       if (activeSection) return activeSection;
       return 'home';

@@ -10,6 +10,7 @@ import About from "./sections/About";
 import WhatWeDo from "./sections/WhatWeDo";
 import Nujum from "./sections/Nujum";
 import Leadership from "./sections/Leadership";
+import LeadershipProfile from "./pages/LeadershipProfile";
 import Form from "./components/common/Form";
 
 function ScrollToHash() {
@@ -42,6 +43,7 @@ function App() {
         <Route path="/what-we-do" element={<WhatWeDo />} />
         <Route path="/nujum" element={<Nujum />} />
         <Route path="/leadership" element={<Leadership />} />
+        <Route path="/leadership/:memberId" element={<LeadershipProfile />} />
         <Route path="/form" element={<Form />} />
       </Routes>
       <Footer />
