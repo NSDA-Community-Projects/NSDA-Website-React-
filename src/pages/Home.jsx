@@ -86,25 +86,34 @@ function Hero() {
   const ref = useFadeIn(0);
   return (
     <header className="relative min-h-screen flex items-center overflow-hidden">
-      {/* star background */}
-      <img src={star} alt="" aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover select-none z-0" />
-      {/* light overlay */}
-      <div className="absolute inset-0 z-0 bg-white/25" />
-      {/* decorative rings */}
-      <div className="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full border-2 border-[#013463]/40 z-0 hidden lg:block" />
-      <div className="absolute -right-16 -top-16 w-[320px] h-[320px] rounded-full border-2 border-[#DDA23A]/40 z-0 hidden lg:block" />
 
+      {/* ── star bg: position fixed to header, covers fully on all screens ── */}
+      <img
+        src={star}
+        alt=""
+        aria-hidden="true"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+      />
+      {/* light overlay */}
+      <div className="absolute inset-0 bg-white/25" style={{ zIndex: 1 }} />
+
+      {/* decorative rings — desktop only */}
+      <div className="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full border-2 border-[#013463]/40 hidden lg:block" style={{ zIndex: 2 }} />
+      <div className="absolute -right-16 -top-16 w-[320px] h-[320px] rounded-full border-2 border-[#DDA23A]/40 hidden lg:block" style={{ zIndex: 2 }} />
+
+      {/* ── content ── */}
       <div
         ref={ref}
-        className="opacity-0 translate-y-10 transition-all duration-700 ease-out relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 pt-16 pb-14 sm:pt-20 md:py-0"
+        className="opacity-0 translate-y-10 transition-all duration-700 ease-out w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+        style={{ position: 'relative', zIndex: 10, paddingTop: '7rem', paddingBottom: '7rem' }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center min-h-screen lg:min-h-0 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-          {/* ── Left ── */}
+          {/* ── Left: text — always full width on mobile, centered ── */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#DDA23A]">
-              <span className="w-6 h-px bg-[#DDA23A] hidden sm:block" />
+
+            <span className="inline-flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#DDA23A]">
+              <span className="w-6 h-px bg-[#DDA23A]" />
               Est. March 31, 2025
             </span>
 
@@ -118,7 +127,7 @@ function Hero() {
               A nationwide community of Muslim students and developers advancing in tech while staying true to Islamic values.
             </p>
 
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-1">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               {["Faith-Driven", "Open-Source", "Student-Led"].map((badge) => (
                 <span key={badge} className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DDA23A]" />
@@ -127,9 +136,21 @@ function Hero() {
               ))}
             </div>
 
-            
+            {/* stats */}
+            <div className="flex flex-wrap gap-8 justify-center lg:justify-start">
+              {[
+                { value: "2025",  label: "Founded"      },
+                { value: "80+",   label: "Members"      },
+                { value: "Multi", label: "Universities" },
+              ].map(({ value, label }) => (
+                <div key={label} className="flex flex-col items-center lg:items-start">
+                  <span className="text-[#DDA23A] font-extrabold text-2xl sm:text-3xl leading-none">{value}</span>
+                  <span className="text-[#013463] text-xs uppercase tracking-widest mt-1 font-semibold">{label}</span>
+                </div>
+              ))}
+            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="https://t.me/nsda_community"
                 target="_blank"
@@ -148,8 +169,8 @@ function Hero() {
             </div>
           </div>
 
-          {/* ── Right image — always visible ── */}
-          <div className="lg:col-span-5 relative">
+          {/* ── Right: image — hidden on mobile, visible md+ ── */}
+          <div className="lg:col-span-5 relative hidden md:block">
             <div className="relative">
               <div className="absolute inset-0 rounded-3xl translate-x-3 translate-y-3 bg-[#DDA23A]/20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
@@ -170,9 +191,9 @@ function Hero() {
       </div>
 
       {/* bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#f6f9fd] to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#f6f9fd] to-transparent pointer-events-none" style={{ zIndex: 10 }} />
       {/* scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce" style={{ zIndex: 20 }}>
         <span className="w-px h-8 bg-[#013463]/30" />
         <span className="w-1.5 h-1.5 rounded-full bg-[#013463]/50" />
       </div>
