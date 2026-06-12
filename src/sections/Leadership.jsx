@@ -142,7 +142,7 @@ export default function Leadership() {
             <div className="flex flex-wrap gap-8 sm:gap-12 mb-8 md:mb-10">
               {[
                
-                { value: '14',  label: 'Founders'        },
+                { value: '15',  label: 'Founders'        },
                 { value: '8+',   label: 'Emerging Leaders'},
                 { value: '15+', label: 'Universities'    },
               ].map(({ value, label }) => (

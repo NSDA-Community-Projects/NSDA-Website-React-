@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SectionWrapper from './SectionWrapper';
 
 const fieldsOfStudy = [
@@ -23,6 +24,8 @@ const universities = [
 ];
 
 export default function Form() {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -66,6 +69,14 @@ export default function Form() {
   return (
     <SectionWrapper id="register" backgroundColor="cloud">
       <div className="form-container">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className=" inline-flex items-center gap-2 text-sm font-bold text-[#013463] hover:text-[#DDA23A] transition-all duration-200 pl-4 sm:pl-6"
+        >
+          ← Back
+        </button>
+
         <div className="form-header">
           <h2>Become a Member. Serve the Ummah.</h2>
           <p>Be part of something bigger. Join NSDA to connect with fellow Muslim developers, build impactful projects, and grow your skills in a faith-centered community.</p>

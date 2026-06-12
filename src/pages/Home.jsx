@@ -243,7 +243,7 @@ function WhatWeDo() {
     { icon: <IconHeart />, title: "Sadaqah Jariyah", description: "Building open-source tools that serve the Ummah and earn continuous reward.", dark: false },
     { icon: <IconStar />,  title: "Nujum al-Code",   description: "Engaging technical deep-dives and webinars with industry veterans.",          dark: true  },
     { icon: <IconUsers />, title: "Mentorship",      description: "One-on-one guidance connecting seasoned devs with aspiring students.",         dark: false },
-    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 48-hour hackathon exclusively for NSDA students.",                dark: true  },
+    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 1 week hackathon exclusively for NSDA students.",                dark: true  },
   ];
   return (
     <section className="py-20 sm:py-28 bg-white relative" id="what-we-do">

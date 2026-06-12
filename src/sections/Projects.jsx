@@ -535,16 +535,7 @@ export default function Projects() {
                 ))}
               </div>
 
-              <a
-                href="https://github.com/NSDA-Community-Projects"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#DDA23A] px-8 py-4 text-sm font-bold text-[#013463] shadow-lg shadow-[#DDA23A]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-400 active:scale-95"
-              >
-                <IconGithub />
-                Explore GitHub Repos
-                <span className="transition-transform duration-200 group-hover:translate-x-1"><IconArrow /></span>
-              </a>
+        
             </div>
 
             {/* right: terminal card */}
@@ -560,7 +551,7 @@ export default function Projects() {
               <div className="space-y-2.5 text-white/65 leading-relaxed">
                 <p><span className="text-[#DDA23A]">$</span> git clone github.com/NSDA-Community-Projects</p>
                 <p className="pl-4">1. Fork the target repository</p>
-                <p className="pl-4">2. Create a branch: <span className="text-green-400">`feat/amazing-thing`</span></p>
+                <p className="pl-4">2. Create your branch</p>
                 <p className="pl-4">3. Push changes and open a Pull Request</p>
                 <p className="pl-4">4. Get reviewed by the community</p>
                 <p className="pt-4 text-white/40 italic">// Build for the Dunya, secure the Akhira.</p>
