@@ -207,25 +207,6 @@ export default function Projects() {
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://github.com/NSDA-Community-Projects"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DDA23A] px-8 py-4 text-sm font-bold text-[#013463] shadow-lg shadow-[#DDA23A]/30 transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-400 active:scale-95"
-              >
-                <IconGithub />
-                Explore on GitHub
-                <span className="transition-transform duration-200 group-hover:translate-x-1"><IconArrow /></span>
-              </a>
-              <a
-                href="/register"
-                className="inline-flex items-center justify-center rounded-full border-2 border-[#013463] bg-white/60 px-8 py-4 text-sm font-bold text-[#013463] transition-all duration-200 hover:bg-[#013463] hover:text-white active:scale-95"
-              >
-                Become a Contributor
-              </a>
-            </div>
           </div>
         </div>
 

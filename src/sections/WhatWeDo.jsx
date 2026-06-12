@@ -122,19 +122,17 @@ export default function WhatWeDo() {
               humanity, rooted in faith and code.
             </p>
 
-            {/* trust badges */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {["Faith-Driven", "Open-Source", "Student-Led"].map((badge) => (
-                <span
-                  key={badge}
-                  className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463]"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#DDA23A]" />
-                  {badge}
-                </span>
-              ))}
-            </div>
-
+           <div className="flex flex-row flex-nowrap overflow-x-auto gap-3 mb-10 py-1 items-center">
+              {["Faith-Driven", "Open-Source", "Student-Led", "Multi-University"].map((badge) => (
+              <span
+               key={badge}
+               className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463] whitespace-nowrap flex-shrink-0"
+             >
+      <span className="w-1.5 h-1.5 rounded-full bg-[#DDA23A]" />
+      {badge}
+    </span>
+  ))}
+</div>
           
             
 
@@ -318,7 +316,7 @@ export default function WhatWeDo() {
       brotherhood. Build fast, build well, build for the Ummah.
     </p>
     <div className="flex gap-3 flex-wrap pt-1">
-      {["Team-Based", "Real Projects", "1 week"].map((tag) => (
+      {["Team-Based", "Real Projects"].map((tag) => (
         <span
           key={tag}
           className="inline-flex items-center gap-1.5 bg-[#f6f9fd] border border-gray-100 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-[#013463] hover:bg-[#013463] hover:text-white hover:border-[#013463] transition-all duration-200 cursor-pointer"

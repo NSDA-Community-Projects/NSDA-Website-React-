@@ -153,16 +153,7 @@ export default function Leadership() {
               ))}
             </div>
 
-            {/* trust badges */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {['Faith-Driven', 'Community-Led', 'Multi-University'].map(b => (
-                <span key={b} className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#DDA23A]" />
-                  {b}
-                </span>
-              ))}
-            </div>
-
+           
             <div className="flex flex-col sm:flex-row gap-4">
              
             </div>

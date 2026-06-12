@@ -10,6 +10,11 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('');
 
+  // Scroll to the top of the page when the route/pathname changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -96,7 +101,7 @@ export default function Navbar() {
           <span style={{ fontSize: '24px', fontWeight: '700', color: '#013463', letterSpacing: '1px' }}>NSDA</span>
         </div>
 
-        <div className="desktop-nav" style={{ display: 'flex', gap: '32px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '60px', alignItems: 'center', flexWrap: 'wrap' }}>
           <Link to="/" style={{ textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer', color: '#000000', borderBottom: active === 'home' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>Home</Link>
           <Link to="/about" style={{ textDecoration: 'none', color: '#000000', borderBottom: active === 'about' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>About</Link>
           <Link to="/what-we-do" style={{ textDecoration: 'none', color: '#000000', borderBottom: active === 'what-we-do' ? '2px solid #DDA23A' : '2px solid transparent', paddingBottom: '4px', fontSize: '14px', fontWeight: '500', textTransform: 'uppercase' }}>What We Do</Link>
@@ -110,7 +115,7 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen && (
-        <div style={{ padding: '16px 24px', borderTop: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '12px', backgroundColor: 'white' }}>
+        <div style={{ padding: '20px 30px', borderTop: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '12px', backgroundColor: 'white' }}>
           <Link to="/" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link to="/about" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link to="/what-we-do" style={{ color: '#000000', textDecoration: 'none', fontWeight: '500', padding: '8px 0' }} onClick={() => setIsMenuOpen(false)}>What We Do</Link>

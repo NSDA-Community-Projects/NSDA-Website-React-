@@ -77,10 +77,11 @@ const IconZap = () => (
 /* ════════════════════════════════════════════════
    HERO — star bg, consistent with all other pages
 ════════════════════════════════════════════════ */
-function Hero() {
-  const ref = useFadeIn(0);
+ function Hero() {
+  const ref = useFadeIn(0); 
+  
   return (
-    <header className="relative min-h-screen flex items-center overflow-hidden">
+    <header className="relative pt-16 md:pt-20 pb-16 flex items-center overflow-hidden">
 
       {/* star background — covers 100% on all screens */}
       <img
@@ -99,13 +100,13 @@ function Hero() {
       {/* content */}
       <div
         ref={ref}
-        className="opacity-0 translate-y-10 transition-all duration-700 ease-out w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-16 md:py-0"
+        className="opacity-0 translate-y-10 transition-all duration-700 ease-out w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32"
         style={{ position: 'relative', zIndex: 10 }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center min-h-screen lg:min-h-0 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-8 md:py-16">
 
           {/* ── Left: text ── */}
-          <div className="lg:col-span-7 space-y-7">
+          <div className="lg:col-span-7 space-y-6">
 
             {/* eyebrow — same as other pages */}
             <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#DDA23A]">
@@ -129,20 +130,17 @@ function Hero() {
             </p>
 
             {/* trust badges */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-row items-center gap-3 overflow-x-auto py-1">
               {["Faith-Driven", "Open-Source", "Student-Led"].map((badge) => (
-                <span key={badge} className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463]">
+                <span key={badge} className="inline-flex items-center gap-1.5 bg-white/70 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-[#013463] whitespace-nowrap flex-shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DDA23A]" />
                   {badge}
                 </span>
               ))}
             </div>
 
-            {/* stats — like About / Projects / Leadership hero */}
-          
-
             {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a
                 href="https://t.me/nsda_community"
                 target="_blank"
@@ -188,7 +186,6 @@ function Hero() {
     </header>
   );
 }
-
 /* ════════════════════════════════════════════════
    ABOUT
 ════════════════════════════════════════════════ */
@@ -233,18 +230,18 @@ function About() {
     </section>
   );
 }
-
 /* ════════════════════════════════════════════════
    WHAT WE DO
 ════════════════════════════════════════════════ */
-function WhatWeDo() {
-  const ref = useFadeIn(0);
+ function WhatWeDo() {
+  const ref = useFadeIn(0); // Make sure useFadeIn is imported or defined
   const pillars = [
     { icon: <IconHeart />, title: "Sadaqah Jariyah", description: "Building open-source tools that serve the Ummah and earn continuous reward.", dark: false },
-    { icon: <IconStar />,  title: "Nujum al-Code",   description: "Engaging technical deep-dives and webinars with industry veterans.",          dark: true  },
-    { icon: <IconUsers />, title: "Mentorship",      description: "One-on-one guidance connecting seasoned devs with aspiring students.",         dark: false },
-    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 1 week hackathon exclusively for NSDA students.",                dark: true  },
+    { icon: <IconStar />,  title: "Nujum al-Code",   description: "Engaging technical deep-dives and webinars with industry veterans.",      dark: true  },
+    { icon: <IconUsers />, title: "Mentorship",      description: "One-on-one guidance connecting seasoned devs with aspiring students.",     dark: false },
+    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 1 week hackathon exclusively for NSDA students.",                  dark: true  },
   ];
+  
   return (
     <section className="py-20 sm:py-28 bg-white relative" id="what-we-do">
       <div ref={ref} className="opacity-0 translate-y-10 transition-all duration-700 ease-out max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
@@ -255,15 +252,26 @@ function WhatWeDo() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#013463] mb-4">Our Pillars of Excellence</h2>
           <div className="w-16 h-1 bg-[#DDA23A] rounded-full mx-auto" />
         </div>
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {pillars.map((p, i) => (
-            <div key={i} className={`group relative rounded-3xl p-8 overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300
+            <div key={i} className={`group relative flex flex-col items-start rounded-3xl p-8 overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300
               ${p.dark ? 'bg-[#013463] text-white shadow-xl' : 'bg-white border border-gray-100 shadow-sm'}`}>
+              
               <span className="absolute top-0 left-8 h-[3px] w-10 bg-[#DDA23A] rounded-b-full" />
               {p.dark && <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/5 group-hover:scale-125 transition-transform duration-500" />}
-              <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#DDA23A] text-[#013463] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">{p.icon}</div>
-              <h3 className={`relative z-10 text-lg font-extrabold mb-3 ${p.dark ? 'text-white' : 'text-[#013463]'}`}>{p.title}</h3>
-              <p className={`relative z-10 leading-relaxed text-sm ${p.dark ? 'text-white/70' : 'text-gray-500'}`}>{p.description}</p>
+              
+              <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#DDA23A] text-[#013463] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                {p.icon}
+              </div>
+              
+              <h3 className={`relative z-10 text-lg font-extrabold mb-3 ${p.dark ? 'text-white' : 'text-[#013463]'}`}>
+                {p.title}
+              </h3>
+              
+              <p className={`relative z-10 leading-relaxed text-sm ${p.dark ? 'text-white/70' : 'text-gray-500'}`}>
+                {p.description}
+              </p>
             </div>
           ))}
         </div>
@@ -429,8 +437,8 @@ function Leadership() {
     { name: "Nebiyou Elias",     role: "Vice President",             university: "AASTU",                  gender: "male",   icon: "fa-user",      linkedin: "https://www.linkedin.com/in/nebiyou-elias-mohammed/"     },
     { name: "Abdelaziz Ebrahim", role: "Content Head",               university: "Bahir Dar University",   gender: "male",   icon: "fa-newspaper", linkedin: "https://www.linkedin.com/in/abdelazizEbrahim/"           },
     { name: "Sumeya Muhammed",   role: "Sisters Communication Head", university: "Jimma University",       gender: "female", icon: "fa-comments",  linkedin: "http://linkedin.com/in/sumeya-muhammed-a83168319/"       },
+    { name: "Sitra Seyfu",       role: "Sisters Production Head", university: "Jimma University",        gender: "female", icon: "fa-video",     linkedin: "https://www.linkedin.com/in/sitra-seyfu-a727b3324?"     },
     { name: "Sumeya Awel",       role: "Sisters President",          university: "ASTU",                   gender: "female", icon: "fa-crown",     linkedin: "https://www.linkedin.com/in/sumeya-awel-320286306?"      },
-    { name: "Miftah Fentaw",     role: "Communication Head",         university: "Haramaya University",    gender: "male",   icon: "fa-bullhorn",  linkedin: "https://www.linkedin.com/in/miftah-fentaw/"              },
   ];
 
   const moreLeaders = [
@@ -441,7 +449,7 @@ function Leadership() {
     { name: "Abdulselam Kemal",  role: "Technical Head",          university: "Addis Ababa University",  gender: "male",   icon: "fa-microchip", linkedin: "https://www.linkedin.com/in/ab-adam74"                   },
     { name: "Rehmet Muhammed",   role: "Sisters Technical Head",  university: "Bahir Dar University",    gender: "female", icon: "fa-code",      linkedin: "https://www.linkedin.com/in/rehmet-muhammed777"          },
     { name: "Abdulaziz Ayalew",  role: "Content Head",            university: "AASTU",                   gender: "male",   icon: "fa-newspaper", linkedin: "https://www.linkedin.com/in/abdulaziz-ayalew"            },
-    { name: "Sitra Seyfu",       role: "Sisters Production Head", university: "Jimma University",        gender: "female", icon: "fa-video",     linkedin: "https://www.linkedin.com/in/sitra-seyfu-a727b3324?"     },
+    { name: "Miftah Fentaw",     role: "Communication Head",         university: "Haramaya University",    gender: "male",   icon: "fa-bullhorn",  linkedin: "https://www.linkedin.com/in/miftah-fentaw/"              },
     { name: "Imadudin Keremu",   role: "Project Manager",         university: "Haramaya University",     gender: "male",   icon: "fa-tasks",     linkedin: "https://www.linkedin.com/in/imadudin-keremu-72630a325?" },
   ];
 

@@ -248,7 +248,7 @@ export default function Nujum() {
               </div>
             </div>
 
-            {/* ── Right — taller featured video ── */}
+            {/* ── Right  featured video ── */}
             <div className="relative">
               <div
                 onClick={() => setSelected(latestEpisode)}
@@ -261,12 +261,12 @@ export default function Nujum() {
                       if (e.target.src.includes("maxresdefault"))
                         e.target.src = `https://img.youtube.com/vi/${featuredVideoId}/hqdefault.jpg`;
                     }}
-                    /* taller: aspect-[16/10] instead of aspect-video (16/9) */
-                    className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
+                    /* taller: aspect-[20/15] instead of aspect-video (16/9) */
+                    className="w-full aspect-[20/15] object-cover transition-transform duration-700 group-hover:scale-105"
                     alt={latestEpisode.title}
                   />
                 ) : (
-                  <div className="w-full aspect-[16/10] bg-[#013463]/10 flex items-center justify-center">
+                  <div className="w-full aspect-[20/15] bg-[#013463]/10 flex items-center justify-center">
                     <span className="text-gray-400 text-sm">Thumbnail loading…</span>
                   </div>
                 )}
