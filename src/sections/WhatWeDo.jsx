@@ -48,6 +48,11 @@ const IconGlobe = () => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
+const IconTrophy = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 21h8m-4-4v4M7 3H5a2 2 0 00-2 2v3c0 2.97 1.69 5.537 4.138 6.76M17 3h2a2 2 0 012 2v3c0 2.97-1.69 5.537-4.138 6.76M7 3a9 9 0 0010 0M7 3C7 3 12 5 12 9s5-6 5-6" />
+  </svg>
+);
 const IconArrow = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -56,11 +61,6 @@ const IconArrow = () => (
 const IconCheck = () => (
   <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-  </svg>
-);
-const IconCode = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
   </svg>
 );
 
@@ -88,7 +88,7 @@ export default function WhatWeDo() {
         />
 
         {/* light overlay — keeps image vivid */}
-        <div className="absolute inset-0 z-0 bg-white/5" />
+        <div className="absolute inset-0 z-0 bg-white/25" />
 
         {/* decorative rings */}
         <div className="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full border-2 border-[#013463]/40 z-0 hidden lg:block" />
@@ -97,7 +97,7 @@ export default function WhatWeDo() {
         {/* content */}
         <div
           ref={heroRef}
-          className="opacity-0 translate-y-10 transition-all duration-700 ease-out relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-28 md:py-0"
+          className="opacity-0 translate-y-10 transition-all duration-700 ease-out relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 pt-24 pb-16 md:pt-32 md:pb-24"
         >
           <div className="max-w-3xl">
 
@@ -122,12 +122,10 @@ export default function WhatWeDo() {
               humanity, rooted in faith and code.
             </p>
 
-          
-  
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/form"
+                href="/register"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DDA23A] px-8 py-4 text-sm font-bold text-[#013463] shadow-lg shadow-[#DDA23A]/30 transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-400 active:scale-95"
               >
                 Become a Member
@@ -139,11 +137,14 @@ export default function WhatWeDo() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border-2 border-[#013463] bg-white/60 px-8 py-4 text-sm font-bold text-[#013463] transition-all duration-200 hover:bg-[#013463] hover:text-white active:scale-95"
               >
-                Join Our Telegram
+                Support Our Projects
               </a>
             </div>
           </div>
         </div>
+
+        {/* bottom fade into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#f6f9fd] to-transparent z-10 pointer-events-none" />
 
         {/* scroll hint */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
@@ -175,9 +176,9 @@ export default function WhatWeDo() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-10">
               {[
-                { value: "11+",  color: "text-white",     label: "Industry Mentors",     sub: "Guiding the next generation" },
-                { value: "80+",  color: "text-[#DDA23A]", label: "Active Students",      sub: "From universities nationwide" },
-                { value: "15+", color: "text-white",     label: "Universities", sub: "Serving the Ummah nationwide" },
+                { value: "11",  color: "text-white",     label: "Industry Mentors",     sub: "Guiding the next generation" },
+                { value: "80",  color: "text-[#DDA23A]", label: "Active Students",      sub: "From universities nationwide" },
+                { value: "15+", color: "text-white",     label: "Open Source Projects", sub: "Serving the Ummah globally" },
               ].map(({ value, color, label, sub }) => (
                 <div
                   key={label}
@@ -292,31 +293,44 @@ export default function WhatWeDo() {
               </div>
 
               {/* NSDA Hackathon — wide */}
-<div className="md:col-span-8 bg-white p-8 sm:p-10 rounded-[1.75rem] border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
-  <span className="absolute top-0 left-10 h-[3px] w-12 bg-[#DDA23A] rounded-b-full" />
-  <div className="space-y-5">
-    <div className="w-12 h-12 rounded-2xl bg-[#DDA23A] flex items-center justify-center text-[#013463]">
-   <IconCode />
-    </div>
-    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#013463]">NSDA Hackathon</h3>
-    <p className="text-gray-500 leading-relaxed text-sm sm:text-base max-w-xl">
-      An internal hackathon exclusively for NSDA students — compete, collaborate,
-      and ship real projects in a timed challenge rooted in purpose and
-      brotherhood. Build fast, build well, build for the Ummah.
-    </p>
-    <div className="flex gap-3 flex-wrap pt-1">
-      {["Team-Based", "Real Projects"].map((tag) => (
-        <span
-          key={tag}
-          className="inline-flex items-center gap-1.5 bg-[#f6f9fd] border border-gray-100 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-[#013463] hover:bg-[#013463] hover:text-white hover:border-[#013463] transition-all duration-200 cursor-pointer"
-        >
-          <span className="w-1 h-1 rounded-full bg-[#DDA23A]" />
-          {tag}
-        </span>
-      ))}
-    </div>
-  </div>
-</div>
+              <div className="md:col-span-8 bg-white p-8 sm:p-10 rounded-[1.75rem] border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+                <span className="absolute top-0 left-10 h-[3px] w-12 bg-[#DDA23A] rounded-b-full" />
+                {/* decorative bg pattern */}
+                <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-[#DDA23A]/5 group-hover:scale-125 transition-transform duration-500" />
+
+                <div className="relative z-10 space-y-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-[#DDA23A] flex items-center justify-center text-[#013463]">
+                      <IconTrophy />
+                    </div>
+                   
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#013463] mb-2">NSDA Hackathon</h3>
+                    <p className="text-gray-500 leading-relaxed text-sm sm:text-base max-w-xl">
+                      An intensive internal hackathon exclusively for NSDA students — compete, collaborate,
+                      and ship real projects in 1 week. Teams solve challenges rooted in faith and
+                      community impact, mentored by NSDA leadership throughout.
+                    </p>
+                  </div>
+
+                  {/* highlights row */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                    {[
+                      { icon: "⏱️", label: "1 week" },
+                      { icon: "👥", label: "Team Based" },
+                      { icon: "🏆", label: "Real Prizes" },
+                      { icon: "🕌", label: "Faith-Driven" },
+                    ].map(({ icon, label }) => (
+                      <div key={label} className="flex flex-col items-center gap-1.5 bg-[#f6f9fd] border border-gray-100 rounded-2xl py-3 px-2 text-center">
+                        <span className="text-xl">{icon}</span>
+                        <span className="text-[11px] font-bold text-[#013463] uppercase tracking-wider">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -393,7 +407,7 @@ export default function WhatWeDo() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="/form"
+              href="/register"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DDA23A] px-10 py-4 text-sm font-bold text-[#013463] shadow-lg shadow-[#DDA23A]/30 transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-400 active:scale-95"
             >
               Become a Member
@@ -405,7 +419,7 @@ export default function WhatWeDo() {
               rel="noreferrer"
               className="inline-flex items-center justify-center rounded-full border-2 border-[#013463] bg-transparent px-10 py-4 text-sm font-bold text-[#013463] transition-all duration-200 hover:bg-[#013463] hover:text-white active:scale-95"
             >
-              Join Our Telegram
+              Support Our Projects
             </a>
           </div>
 

@@ -77,11 +77,10 @@ const IconZap = () => (
 /* ════════════════════════════════════════════════
    HERO — star bg, consistent with all other pages
 ════════════════════════════════════════════════ */
- function Hero() {
-  const ref = useFadeIn(0); 
-  
+function Hero() {
+  const ref = useFadeIn(0);
   return (
-    <header className="relative pt-16 md:pt-20 pb-16 flex items-center overflow-hidden">
+    <header className="relative min-h-screen flex items-center overflow-hidden">
 
       {/* star background — covers 100% on all screens */}
       <img
@@ -91,7 +90,7 @@ const IconZap = () => (
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
       />
       {/* light overlay */}
-      <div className="absolute inset-0 bg-white/5" style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-white/25" style={{ zIndex: 1 }} />
 
       {/* decorative rings — desktop only */}
       <div className="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full border-2 border-[#013463]/40 hidden lg:block" style={{ zIndex: 2 }} />
@@ -100,13 +99,13 @@ const IconZap = () => (
       {/* content */}
       <div
         ref={ref}
-        className="opacity-0 translate-y-10 transition-all duration-700 ease-out w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32"
+        className="opacity-0 translate-y-10 transition-all duration-700 ease-out w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 pt-24 pb-16 md:pt-32 md:pb-24"
         style={{ position: 'relative', zIndex: 10 }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center py-8 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center lg:py-20">
 
           {/* ── Left: text ── */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-7">
 
             {/* eyebrow — same as other pages */}
             <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#DDA23A]">
@@ -131,7 +130,7 @@ const IconZap = () => (
 
 
             {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://t.me/nsda_community"
                 target="_blank"
@@ -177,13 +176,14 @@ const IconZap = () => (
     </header>
   );
 }
+
 /* ════════════════════════════════════════════════
    ABOUT
 ════════════════════════════════════════════════ */
 function About() {
   const ref = useFadeIn(0);
   return (
-    <section className="py-20 sm:py-28 bg-[#F6F9FD] relative overflow-hidden" id="about">
+    <section className="py-20 sm:py-28 bg-[#f6f9fd] relative overflow-hidden" id="about">
       <div ref={ref} className="opacity-0 translate-y-10 transition-all duration-700 ease-out max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-6">
@@ -221,18 +221,18 @@ function About() {
     </section>
   );
 }
+
 /* ════════════════════════════════════════════════
    WHAT WE DO
 ════════════════════════════════════════════════ */
- function WhatWeDo() {
-  const ref = useFadeIn(0); // Make sure useFadeIn is imported or defined
+function WhatWeDo() {
+  const ref = useFadeIn(0);
   const pillars = [
     { icon: <IconHeart />, title: "Sadaqah Jariyah", description: "Building open-source tools that serve the Ummah and earn continuous reward.", dark: false },
-    { icon: <IconStar />,  title: "Nujum al-Code",   description: "Engaging technical deep-dives and webinars with industry veterans.",      dark: true  },
-    { icon: <IconUsers />, title: "Mentorship",      description: "One-on-one guidance connecting seasoned devs with aspiring students.",     dark: false },
-    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 1 week hackathon exclusively for NSDA students.",                  dark: true  },
+    { icon: <IconStar />,  title: "Nujum al-Code",   description: "Engaging technical deep-dives and webinars with industry veterans.",          dark: true  },
+    { icon: <IconUsers />, title: "Mentorship",      description: "One-on-one guidance connecting seasoned devs with aspiring students.",         dark: false },
+    { icon: <IconCode />,  title: "NSDA Hackathon",  description: "An internal 48-hour hackathon exclusively for NSDA students.",                dark: true  },
   ];
-  
   return (
     <section className="py-20 sm:py-28 bg-white relative" id="what-we-do">
       <div ref={ref} className="opacity-0 translate-y-10 transition-all duration-700 ease-out max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
@@ -243,26 +243,15 @@ function About() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#013463] mb-4">Our Pillars of Excellence</h2>
           <div className="w-16 h-1 bg-[#DDA23A] rounded-full mx-auto" />
         </div>
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {pillars.map((p, i) => (
-            <div key={i} className={`group relative flex flex-col items-start rounded-3xl p-8 overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300
+            <div key={i} className={`group relative rounded-3xl p-8 overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300
               ${p.dark ? 'bg-[#013463] text-white shadow-xl' : 'bg-white border border-gray-100 shadow-sm'}`}>
-              
               <span className="absolute top-0 left-8 h-[3px] w-10 bg-[#DDA23A] rounded-b-full" />
               {p.dark && <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/5 group-hover:scale-125 transition-transform duration-500" />}
-              
-              <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#DDA23A] text-[#013463] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                {p.icon}
-              </div>
-              
-              <h3 className={`relative z-10 text-lg font-extrabold mb-3 ${p.dark ? 'text-white' : 'text-[#013463]'}`}>
-                {p.title}
-              </h3>
-              
-              <p className={`relative z-10 leading-relaxed text-sm ${p.dark ? 'text-white/70' : 'text-gray-500'}`}>
-                {p.description}
-              </p>
+              <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#DDA23A] text-[#013463] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">{p.icon}</div>
+              <h3 className={`relative z-10 text-lg font-extrabold mb-3 ${p.dark ? 'text-white' : 'text-[#013463]'}`}>{p.title}</h3>
+              <p className={`relative z-10 leading-relaxed text-sm ${p.dark ? 'text-white/70' : 'text-gray-500'}`}>{p.description}</p>
             </div>
           ))}
         </div>
@@ -428,8 +417,8 @@ function Leadership() {
     { name: "Nebiyou Elias",     role: "Vice President",             university: "AASTU",                  gender: "male",   icon: "fa-user",      linkedin: "https://www.linkedin.com/in/nebiyou-elias-mohammed/"     },
     { name: "Abdelaziz Ebrahim", role: "Content Head",               university: "Bahir Dar University",   gender: "male",   icon: "fa-newspaper", linkedin: "https://www.linkedin.com/in/abdelazizEbrahim/"           },
     { name: "Sumeya Muhammed",   role: "Sisters Communication Head", university: "Jimma University",       gender: "female", icon: "fa-comments",  linkedin: "http://linkedin.com/in/sumeya-muhammed-a83168319/"       },
-    { name: "Sitra Seyfu",       role: "Sisters Production Head", university: "Jimma University",        gender: "female", icon: "fa-video",     linkedin: "https://www.linkedin.com/in/sitra-seyfu-a727b3324?"     },
     { name: "Sumeya Awel",       role: "Sisters President",          university: "ASTU",                   gender: "female", icon: "fa-crown",     linkedin: "https://www.linkedin.com/in/sumeya-awel-320286306?"      },
+    { name: "Miftah Fentaw",     role: "Communication Head",         university: "Haramaya University",    gender: "male",   icon: "fa-bullhorn",  linkedin: "https://www.linkedin.com/in/miftah-fentaw/"              },
   ];
 
   const moreLeaders = [
@@ -440,7 +429,7 @@ function Leadership() {
     { name: "Abdulselam Kemal",  role: "Technical Head",          university: "Addis Ababa University",  gender: "male",   icon: "fa-microchip", linkedin: "https://www.linkedin.com/in/ab-adam74"                   },
     { name: "Rehmet Muhammed",   role: "Sisters Technical Head",  university: "Bahir Dar University",    gender: "female", icon: "fa-code",      linkedin: "https://www.linkedin.com/in/rehmet-muhammed777"          },
     { name: "Abdulaziz Ayalew",  role: "Content Head",            university: "AASTU",                   gender: "male",   icon: "fa-newspaper", linkedin: "https://www.linkedin.com/in/abdulaziz-ayalew"            },
-    { name: "Miftah Fentaw",     role: "Communication Head",         university: "Haramaya University",    gender: "male",   icon: "fa-bullhorn",  linkedin: "https://www.linkedin.com/in/miftah-fentaw/"              },
+    { name: "Sitra Seyfu",       role: "Sisters Production Head", university: "Jimma University",        gender: "female", icon: "fa-video",     linkedin: "https://www.linkedin.com/in/sitra-seyfu-a727b3324?"     },
     { name: "Imadudin Keremu",   role: "Project Manager",         university: "Haramaya University",     gender: "male",   icon: "fa-tasks",     linkedin: "https://www.linkedin.com/in/imadudin-keremu-72630a325?" },
   ];
 
@@ -545,7 +534,7 @@ function CTA() {
 ════════════════════════════════════════════════ */
 export default function Home() {
   return (
-    <main className="overflow-x-hidden" style={{ paddingTop: '70px' }}>
+    <main className="overflow-x-hidden">
       <Hero />
       <div id="about">      <About />      </div>
       <div id="what-we-do"> <WhatWeDo />   </div>
