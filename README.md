@@ -1,16 +1,73 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="public/nsda.png" alt="NSDA Logo" width="70" />
 
-Currently, two official plugins are available:
+# NSDA — Nejm Student Developers Association
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![Telegram](https://img.shields.io/badge/Telegram-Join-0088cc?style=flat-square&logo=telegram)](https://t.me/nsda_community)
+[![Live](https://img.shields.io/badge/Live%20Site-Visit-013463?style=flat-square&logo=vercel)](https://nsda.vercel.app)
 
-## React Compiler
+*Faith-driven tech community · Founded March 31, 2025 · Ethiopia*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## About
+
+NSDA empowers Muslim students across Ethiopia to grow technically while staying rooted in Islamic values. We build open-source tools for the Ummah, run mentorship programs, and host the **Nujum al-Code** webinar series.
+
+## Tech Stack
+
+- **React 18 + Vite** — frontend framework
+- **Tailwind CSS** — styling (no plain CSS)
+- **React Router v6** — routing
+- **Font Awesome 6** — icons (CDN)
+
+## Getting Started
+
+```bash
+git clone https://github.com/NSDA-Community-Projects/NSDA-Website-React-.git
+cd NSDA-Website-React-
+npm install
+npm run dev        # → http://localhost:5173
+npm run build      # production build → dist/
+```
+
+## Pages
+
+| Route | Page |
+|-------|------|
+| `/` | Home |
+| `/about` | About |
+| `/what-we-do` | What We Do |
+| `/projects` | Projects (9 open-source) |
+| `/nujum` | Nujum al-Code Podcast |
+| `/leadership` | Leadership Team |
+
+## Branding
+
+| Color | Hex | Use |
+|-------|-----|-----|
+| Navy | `#013463` | Primary |
+| Gold | `#DDA23A` | Accents |
+| Light BG | `#f6f9fd` | Sections |
+
+## Contributing
+
+```bash
+git checkout -b feat/your-feature
+# make changes → commit → open PR
+```
+
+- Tailwind only — no plain CSS classes
+- Data in `src/data/` — not hardcoded in components
+- Never mix data exports with components in `.jsx` files (breaks Vite HMR)
+
+---
+
+<div align="center">
+
+Built for the Ummah · بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+
+</div>
